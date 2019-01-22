@@ -1,0 +1,12 @@
+# Ignore output files from latex
+
+*.aux
+*.bbl
+*.blg
+*.glo
+*.xdy
+*.log
+PLOS-submission-eps-converted-to.pdf
+plos_latex_template.pdf
+*.swp
+*.out
