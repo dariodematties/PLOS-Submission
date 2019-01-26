@@ -113,6 +113,11 @@
 % for comments
 \usepackage{todonotes}
 
+% packages for algorithms in the document
+\usepackage{algorithm}
+\usepackage{caption}
+\usepackage{algorithmic}
+
 % create "+" rule type for thick vertical lines
 \newcolumntype{+}{!{\vrule width 2pt}}
 
@@ -583,10 +588,29 @@ Fig \ref{fig:PyramidalCell} shows the connectivity profile in such units.
 ~\\
 
 In reference to proximal connections in the \gls{el}, each neural unit in a \gls{cc} has the same set of
-proximal connections to the \gls{mrstsa} (Fig \ref{fig:EncoderColumnConnections}).
+proximal connections to the \gls{mrstsa} (Fig \ref{fig:EncoderProximalConnections}).
 Such connections constitute a multidimensional space of real numbers.
 In order to acquire the statistical distribution in such multidimensional real space we use
-a multidimensional \gls{som} in each cortical column.
+a multidimensional \gls{som} in each cortical column (Alg.~\ref{csom_proximal_synapses}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{EncoderProximalConnections.png}
+    \caption{\glsfirst{el} proximal connections. Each \gls{cc} in the \gls{el}--exemplified here in red--has its receptive field over the \gls{mrstsa}--in yellow.
+    (A) A set of \gls{mrstsa} components--in green inside the receptive field--is randomly chosen to be connected with such \gls{cc}.
+    (B) Each neural unit in such \gls{cc} is connected with the same set of \gls{mrstsa} components.}
+    \label{fig:EncoderProximalConnections}
+\end{figure}
+
+\begin{algorithm}
+	\caption{\texttt{Plasticity in Proximal Synapses}. \glsfirst{som} algorithm.}
+\label{csom_proximal_synapses}
+\begin{algorithmic}[1]
+	\STATE{given an \texttt{input} vector, find the nearest \texttt{unit} to such \texttt{input} vector in the input space}
+	\STATE{move such \texttt{unit} towards the \texttt{input} vector in the input space (the magnitude of such movement depends on the learning rate)}
+	\STATE{also move neighbor \texttt{units} to the nearest one towards the \texttt{input} vector (the magnitude of such movement depends on the learning rate and on a neighborhood measure over the topology of the network of units)}
+\end{algorithmic}
+\end{algorithm}
 
 A \gls{som} is an unsupervised clustering algorithm which distributes a continuous multidimensional distribution
 in a discrete multidimensional distribution of units \cite{Kohonen:1989:SAM:69371, kohonen_2082}.
@@ -596,8 +620,9 @@ Generally, $m < n$ in order to reduce the dimensionality in the discrete represe
 We added such restriction in our columnar algorithm.
 
 In the \gls{som} algorithm, each input vector has to be completely determined.
-In our case, some inputs from the \gls{mrstsa} could be null,
-and each input vector could not have the information of each of its components available.
+In our case, several elements in the inputs from the \gls{mrstsa} could be null,
+and considering such null inputs could inpair learning. 
+Hence, each input vector could not have the information of each of its components available.
 We incorporated a stochastic mechanism in the \gls{el} in order to deal with such situation.
 We made each afferent connection to learn statistical boundaries from its corresponding input.
 We establish a minimum-maximum margin in each proximal connection in the \gls{el}.
@@ -682,10 +707,40 @@ A cell unit inside the red \gls{cc} ends up with as many dendritic branches as g
 
 The term \emph{potential connection} is used, because it describes a pair of neural units linked by its physical location and dendritic and axonal disposition in cortical tissue (Fig. \ref{fig:DistalDendrites} C). However, an effective connectivity between such neurons will depend upon their sequential pattern of activation which will establish developed synapses between them. If two neural units--a red one and a yellow one in Fig. \ref{fig:DistalDendrites} D--are linked by means of a distal potential connection--produced by a synapse between a distal dendritic branch from the red one and an axonal branch from the yellow one--such connection will grow only if there is a sequential activation of the red cell after an activation of the yellow cell, in two consecutive time steps. If such phenomenon does not repeat itself over time, such synapse will decrease its strength with respect to other synapses in the dendritic branch in the red cell in Fig. \ref{fig:DistalDendrites} D. A simultaneous activation in both neural units--the red one and the yellow one in Fig. \ref{fig:DistalDendrites} D--will decrease the strength in such potential connection.
 
-We implemented distal dendritic synaptic plasticity mechanisms by means of an algorithm called \gls{dsom}.
+We implemented distal dendritic synaptic plasticity mechanisms by means of an algorithm called \gls{dsom} (Alg. \ref{csom_distal_synapses}).
 The learning mechanisms implemented on such algorithm simulate neurophysiological phenomena
 such as \gls{stdp}, and homeostatic regulation plasticity in the synaptic strength regulation in
 distal dendritic branches.
+
+\begin{algorithm}
+	\caption{\texttt{Plasticity in Distal Synapses}. This algorithm accounts for \glsfirst{stdp} and homeostatic regulation phenomenon in distal dendritic synapses.}
+\label{csom_distal_synapses}
+\begin{algorithmic}[1]
+	\FOR{every active \texttt{unit} in this cortical \texttt{column}}
+		\FOR{every \texttt{dendrite} in this active \texttt{unit}}
+			\STATE {increment all the \texttt{synapses}--in this dendrite--potentially connected to \texttt{units} which were active in the last time step}
+		\ENDFOR
+	\ENDFOR
+	\FOR{every active \texttt{unit} in this cortical \texttt{column}}
+		\FOR{every \texttt{dendrite} in this active \texttt{unit}}
+			\STATE {decrement all the \texttt{synapses}--in this dendrite--potentially connected to \texttt{units} which are active in this time step}
+		\ENDFOR
+	\ENDFOR
+	\IF{updated \texttt{step} reaches certain value}
+		\FOR{every \texttt{unit} in this cortical \texttt{column}}
+			\FOR{every \texttt{dendrite} in this \texttt{unit}}
+				\IF{the sum of the \texttt{synapses} in this \texttt{dendrite} is greater than one}
+					\STATE {normalize all \texttt{synapses} in this \texttt{dendrite}}
+				\ENDIF
+			\ENDFOR
+		\ENDFOR
+		\STATE{updated \texttt{step} = 0}
+	\ENDIF
+	\STATE{updated \texttt{step}++} 
+\end{algorithmic}
+\end{algorithm}
+
+Basically, Alg.~\ref{csom_distal_synapses} updates all distal axonal-dendritic synapses such that those are incremented allways that pre and post-synaptic neural units bicome active in consecutive time steps and decremented when they become active at the same time step. Occasionally, all the synaptic weights belonging to the same dendrite are normalized every certain number of time steps. This normalization is repeated for all neural units and for all dendritic branches in each neural unit whose sum of synaptic weights is beyond unity.
 
 
 
@@ -750,6 +805,89 @@ In case there is no context, that is, not enough number of the units which tend 
 is partially depolarized by previous--lateral and apical--activations--Fig. \ref{fig:Activation} B right--,
 all units in the afferent excited clusters will be active, covering more hypotheses for next inputs--Fig. \ref{fig:Activation} C right.
 
+Such activation mechanism is depicted in Alg. \ref{csom_activation}. In Alg. \ref{csom_activation} (Part 1) a ranking is established among neural units--inside a \gls{cc}--in terms of its afferent excitability, given the afferent inputs (lines 1 and 2). The \emph{number of afferently excited units} makes reference to the maximum number of  units that can be activated by the afferent input in a \gls{cc} and \emph{minimum number of active units} makes reference to the number of units that will be active in a \gls{cc} if a \gls{sdr} is achieved as a result of optimal prediction (lines 3 and 4 respectively).
+
+\begin{algorithm}
+	\caption{\texttt{Units activation (Part 1)}. This algorithm establishes the activation rules in a \gls{csom} object.}
+\label{csom_activation}
+\begin{algorithmic}[1]
+	\STATE{\texttt{distances} = given an \texttt{input} vector find the euclidean distance each \texttt{unit} has to such \texttt{input} in the input space from proximal afferent synapses}
+
+	\STATE {\texttt{ranking} = sort indexes from the smallest to the largest \texttt{distances}}
+
+	\STATE{number of afferently excited units = proximal activation percentage*number of units}
+
+	\STATE{minimum number of active units = (1-sparsity)*number of units}
+
+	\IF{randomness is disabled}
+		\STATE {excited \texttt{units} = gets the first \emph{number of afferently excited units} elements from \texttt{ranking}}
+	\ELSE
+		\STATE {excited \texttt{units} = gets \emph{number of afferently excited units} random indexes from \texttt{distances} with probabilities determined by the relative reciprocal of the \texttt{distances} element values}
+	\ENDIF
+
+	\FOR{\texttt{unit} = 0 \TO \texttt{unit} = number of units }
+		\STATE{auxiliary = 0}
+		\FOR{\texttt{dendrite} = 0 \TO \texttt{dendrite} = number of distal dendrites }
+			\STATE{\texttt{dendrite} accumulator = 0}
+			\FOR{\texttt{active unit} = 0 \TO \texttt{active unit} = number of linked active units}
+				\STATE{potential \texttt{index} = find the first coincident index in potential \texttt{connections[dendrite][unit]} with linking \texttt{units[dendrite][active unit]}}
+				\IF{there exist coincidence}
+					\STATE {\texttt{dendrite} accumulator += dynamic \texttt{synapses[dendrite][unit][\textnormal{potential} index]}}
+				\ENDIF
+			\ENDFOR
+			\IF{\texttt{dendrite} accumulator $>$ 100*DISTAL\_SYNAPTIC\_THRESHOLD}
+				\STATE {auxiliary++}
+			\ENDIF
+		\ENDFOR
+		\STATE{total \texttt{responses[unit]} += auxiliary}
+	\ENDFOR
+	\STATE{updated \texttt{distances} = element wise quotient between \texttt{distances} and total \texttt{responses}}
+	\STATE {updated \texttt{ranking} = sort indexes from the smallest to the largest updated \texttt{distances}}
+
+\end{algorithmic}
+\end{algorithm}
+
+If randomness is enabled, \emph{number of afferently excited units} units is chosen at random by means of a discrete distribution whose probabilities are the afferent excitation of each unit. If randomness is disabled, \emph{number of afferently excited units} first units are chosen from the ranking of afferently excited units (lines 5 to 9).
+
+From line 10 to 25 each neural unit accumulates distal--lateral and apical--excitation in order to determine its partial depolarization from units which were active in the previous time step. For each neural unit in a \gls{cc}, for each distal dendrite in such unit and for each active unit in such distal dendrite the algorithm looks for coincidences between some potential connection in such distal dendrite in the neural unit and the active unit in such distal dendrite. That is, in line 15, the algorithm ask if there is coincidence between some potential connection in this distal dendrite inside the unit and the neural unit activated in the previous time step in the \gls{cc} linked by such distal dendrite. If there is coincidence, the value of the synaptic weight in such potential connection is accumulated in a dendrite accumulator. After all active units are examined for this dendrite, if the dendrite accumulator is greater than certain threshold, such dendrite is considered active and the total response of the unit is incremented in one.
+
+Each neural unit ends up with an excitation value due to its distal dendrites. The unit distances vector is element wise divided by distal dendritic excitations vector to get the updated distances and an updated ranking of the units (lines 26 and 27). In this way, units with more distal excitation will decrease its distance more and will be put in a more favorable place in the ranking in order to be activated.
+
+In Alg. \ref{csom_activation} (Part 2) the minimum updated distance is found in the group of afferently excited units. Then, a set of units--inside the group of afferently excited units--is identified which have such minimum updated distance. While the number of identified units is less than \emph{minimum number of active units}, the next   minimum updated distance is found in the group of afferently excited units and a new set of units--inside the group of afferently excited units--is identified which have such next minimum updated distance. This new set is added to the previous one until the number of units in this accumulative set is greater than or equal to the minimum number of active units.
+
+\begin{algorithm}
+\ContinuedFloat
+\caption{\texttt{Units activation (Part 2)}. This algorithm establishes the activation rules in a \gls{csom} object.}
+\label{csom_activation}
+\begin{algorithmic}[1]
+	\STATE{new \texttt{distances} = get the updated \texttt{distances} elements whose indexes are in excited \texttt{units}}
+	\STATE{new minimum \texttt{distance} = get the minimum element from new \texttt{distances}}
+	\STATE{minimum \texttt{indexes} = get indexes from updated \texttt{distances} vector whose values are equal to new minimum \texttt{distance}}
+	\STATE{apt to be \texttt{active} = get the coincident indexes between excited \texttt{units} and minimum \texttt{indexes}}
+	\STATE{erase from new \texttt{distances} vector, all the elements whose value is equal to new minimum \texttt{distance}}
+
+	\WHILE{number of elements in apt to be \texttt{active} vector $<$ \emph{minimum number of active units} and new \texttt{distances} has at least one element}
+		\STATE{new minimum \texttt{distance} = get the minimum element from new \texttt{distances}}
+		\STATE{minimum \texttt{indexes} = get indexes from updated \texttt{distances} vector whose values are equal to new minimum \texttt{distances}}
+		\STATE{partial apt to be \texttt{active} = get the coincident indexes between excited \texttt{units} and minimum \texttt{indexes}}
+		\STATE{incorporate partial apt to be \texttt{active} elements into apt to be \texttt{active} vector}
+		\STATE{erase from new \texttt{distances} vector, all the elements whose value is equal to new minimum \texttt{distance}}
+	\ENDWHILE
+
+	\IF{ENABLE\_RANDOM\_BEHAVIOUR}
+		\STATE {shuffle apt to be \texttt{active} vector}
+	\ENDIF
+
+	\FOR{\texttt{number} = 0 \TO \texttt{number} = number of apt to be \texttt{active} elements }
+		\STATE {incorporate to \texttt{output} the excited \texttt{units[\textnormal{apt to be} active[number]]}}
+	\ENDFOR
+
+	\RETURN \texttt{output}
+\end{algorithmic}
+\end{algorithm}
+
+The functional result of Alg. \ref{csom_activation} is that there must be a sufficient amount of--partially and previously depolarized--neural units inside the afferently activated cluster of units in order to get a \gls{sdr} pattern of activation. Otherwise, the \gls{cc} will end up with a massive activation pattern, a \glsfirst{mfe} in which more than a \emph{minimum number of active units} will be active. In the case of the occurrence of a \gls{mfe}, the synaptic plasticity is modulated in order to form stronger synapses of those neural units activated during such event. 
+
 Each neural unit in a \gls{cc} establishes its state of partial depolarization based on the contribution from
 distal dendritic branches from lateral and apical connections.
 A dendritic branch will contribute to the partial depolarization of the soma in such cell only if such
@@ -758,8 +896,8 @@ in the context of the patterns of activation in the previous time step.
 
 This mechanism has compelling sequential properties \cite{hawkins_2016},
 which have already been applied in the classification of artificially generated sequential data \cite{cui_2016}.
-We apply such mechanism in the \gls{dsom} algorithm by adding the contribution of synapses--in a dendritic branch--
-whose connections are linked with cells that were active in the previous time step in the \gls{el}.
+We apply such mechanism in the \gls{dsom} algorithm by adding the contribution of synapses--in a dendritic branch--whose connections
+are linked with cells that were active in the previous time step in the \gls{el}.
 
 
 
