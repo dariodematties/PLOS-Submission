@@ -269,7 +269,7 @@ B. Silvano Zanutto\textsuperscript{1,4} %,
 %I kept this copy of the old abstract just in case we need it again
 %There are many computational theories that have been developed in order to improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units--such as phonemes--are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. We introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. The model leverages the phonetic classification performance of the supervised \gls{svm} for monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch variations. Thus, our computational model outperforms sophisticated multiresolution spectro-temporal auditory feature representations of phonetic linguistic streams of data.
 
-There are many computational theories that have been developed in order to improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to psycholinguistics data and neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units–such as phonemes–are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. Yet, we are specially motivated by the fact that 8-month-old human infants can accomplish segmentation of words from fluent audio streams based exclusively on the statistical relationships between neighboring speech sounds without any kind of supervision. In this paper, we introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. Our model leverages the phonetic classification performance of the supervised \gls{svm} for monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch variations. Furthermore, our approach emphasizes potential self-organizing cortical principles achieving an improvement without any kind of optimization guidance which could minimize hypothetical loss functions by means of backpropagation. Thus, our computational model outperforms sophisticated multiresolution spectro-temporal auditory feature representations using only the statistical sequential structure immerse in the phonotactic rules of the input stream.
+\textcolor{red}{Many computational theories have been developed to} improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to psycholinguistics data and neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units–such as phonemes–are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. \textcolor{blue}{Yet, we are specially motivated by the fact that 8-month-old human infants can accomplish segmentation of words from fluent audio streams based exclusively on the statistical relationships between neighboring speech sounds without any kind of supervision}. In this paper, we introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties, \textcolor{red}{including columnar organization, spontaneous micro-columnar formation, adaptation to contextual activations and \glspl{sdr} produced by means of partial \gls{nmda} depolarization}. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. \textcolor{red}{Our model improves the performance of a \gls{svm} classifier for} monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch variations. \textcolor{blue}{Furthermore, our approach emphasizes potential self-organizing cortical principles achieving an improvement without any kind of optimization guidance which could minimize hypothetical loss functions by means of backpropagation}. Thus, our computational model outperforms sophisticated multiresolution spectro-temporal auditory feature representations \textcolor{blue}{using only the statistical sequential structure immerse in the phonotactic rules of the input stream}.
 
 % * <awainselboim@gmail.com> 2018-05-15T14:16:16.696Z:
 %
@@ -287,7 +287,7 @@ There are many computational theories that have been developed in order to impro
 %I kept this copy of the old author summary just in case we need it again
 %Striking computational properties emerge from certain features of the mammalian cortex in general. Understanding how phonetic invariance and generalization can arise from such features is an outstanding challenge in neuroscience. Furthermore, overcoming this challenge could shed light on the mechanisms governing other modalities, given the anatomical and physiological uniformity found in cortical tissue. We base our work on a set of cortical features in the mammalian cortex which we believe could be relevant for invariance and generalization in phonetic perception. We incorporate such features in a computational model that shows to explain invariance and generalization in the classification of words with different number of syllables. The outcome is a computational model, inspired by the biology of cortical tissue, which can learn and robustly recognize the phonetic structure of words in the presence of different disturbances--not present during training--affecting the auditory stimulus. This research has significant potential to open up new--and more biologically accurate--alternatives to overcome limitations in current deep feature extraction methods.
 
-Striking computational properties emerge from certain features of the mammalian cortex in general. Understanding how phonetic invariance and generalization can arise from such features is an outstanding challenge in neuroscience. Furthermore, overcoming this challenge could shed light on the mechanisms governing other modalities, given the anatomical and physiological uniformity found in cortical tissue. We base our work on a set of features in the mammalian cortex which we believe could be relevant for phonetic perception invariance and generalization in the absent of any clue beyond the statistical regularity present in the input stream. We incorporate such features in a computational model that shows to explain invariance and generalization in the classification of words with different number of syllables. The outcome is a computational model, inspired by the biology of cortical tissue, which can learn and robustly recognize the phonetic structure of words in the presence of different disturbances--not present during training--affecting the auditory stimulus. This research has significant potential to open up new--and more biologically accurate--alternatives to overcome limitations in current deep feature extraction methods.
+Striking computational properties emerge from certain features of the mammalian cortex in general. Understanding how phonetic invariance and generalization can arise from such features is an outstanding challenge in neuroscience. Furthermore, overcoming this challenge could shed light on the mechanisms governing other modalities, given the anatomical and physiological uniformity found in cortical tissue. We base our work on a set of features in the mammalian cortex which we believe could be relevant for phonetic perception invariance and generalization \textcolor{blue}{in the absent of any clue beyond the statistical regularity present in the input stream}. We incorporate such features \textcolor{red}{in a computational model which we show improves invariance and generalization} in the classification of words with different number of syllables. The outcome is a computational model, inspired by the biology of cortical tissue, which can learn and robustly recognize the phonetic structure of words in the presence of different disturbances--not present during training--affecting the auditory stimulus. This research has significant potential to open up new--and more biologically accurate--alternatives to overcome limitations in current deep feature extraction methods.
 
 
 
@@ -308,12 +308,12 @@ Striking computational properties emerge from certain features of the mammalian 
 
 It is well known that human beings can reliably discriminate phonemes as well as other linguistic units by categorizing them, despite considerable variability across different speakers with different pitches and prosody. Furthermore, this ability extends to noisy and reverberant environments.
 
-Although such proficiency could in part be attributed to top-down information \cite{PMID:17451657} originated in the grammatical and semantic \cite{OBLESER2011713,10.1093/cercor/bhp128} dimensions present in human language--beyond the phonetic features in the speech signal--trained animals are also able to discriminate phoneme pairs categorically and to generalize in novel situations~\cite{kuhl_1975, kuhl_1983, kluender_1998, pons_2006, hienz_1996, dent_1997, lotto_1997}. For instance, cortical activations in naive ferrets, revealed the existence of spectro-temporal tuning in \gls{a1} with the capacity of supporting discrimination of many American English phonemes \cite{mesgarani_2008}, even when stimuli were distorted by additive noise and reverberation \cite{mesgarani_2014A}.
+\textcolor{green}{Although such proficiency could in part be attributed to top-down information \cite{PMID:17451657} originated in the grammatical and semantic \cite{OBLESER2011713,10.1093/cercor/bhp128} dimensions present in human language--beyond the phonetic features in the speech signal}--trained animals are also able to discriminate phoneme pairs categorically and to generalize in novel situations~\cite{kuhl_1975, kuhl_1983, kluender_1998, pons_2006, hienz_1996, dent_1997, lotto_1997}. For instance, \textcolor{red}{cortical activations in naive ferrets revealed the existence} of spectro-temporal tuning in \gls{a1} with the capacity of supporting discrimination of many American English phonemes \cite{mesgarani_2008}, even when stimuli were distorted by additive noise and reverberation \cite{mesgarani_2014A}.
 
 %I added this paragraph to the intro
-It is even more remarkable that an extremely complex task of early language acquisition as is the segmentation of words from fluent speech, is fulfilled by 8-month-old infants based simply on the statistical relationships between neighboring speech sounds \cite{Saffran1996StatisticalLB}. With only 2 minutes of exposure to a continuous speech stream generated by a speech synthesizer, infants returned a significant test-trial discrimination showing the phonetic acquisition. Furthermore, in the training phase there was no acoustic information about word boundaries beyond the statistical structure in the phonotactic rules immerse in the stimuli, and the subjects received no external associative supervision or reinforcement which could have guided or boosted the phonetic acquisition task, which was entirely incidental. 
+\textcolor{blue}{It is even more remarkable that an extremely complex task of early language acquisition as is the segmentation of words from fluent speech, is fulfilled by 8-month-old infants based simply on the statistical relationships between neighboring speech sounds \cite{Saffran1996StatisticalLB}. With only 2 minutes of exposure to a continuous speech stream generated by a speech synthesizer, infants returned a significant test-trial discrimination showing the phonetic acquisition. Furthermore, in the training phase there was no acoustic information about word boundaries beyond the statistical structure in the phonotactic rules immerse in the stimuli, and the subjects received no external associative supervision or reinforcement which could have guided or boosted the phonetic acquisition task, which was entirely incidental}.
 
-How can cortical tissue show such physiological properties in response to complex auditory streams? This incidentally acquired invariance in phonetic perception found in mammals must be grounded necessarily in anatomical and neurophysiological characterisitcs of the mammalian cortex. The features we foresee as potentially relevant will be described in the following section.
+How can cortical tissue show such physiological properties in response to complex auditory streams? This \textcolor{blue}{incidentally acquired} invariance in phonetic perception found in mammals must be grounded necessarily in anatomical and neurophysiological characterisitcs of the mammalian cortex. The features we foresee as potentially relevant will be described in the following section.
 
 
 
@@ -323,7 +323,7 @@ How can cortical tissue show such physiological properties in response to comple
 
 \subsection*{Anatomical and neurophysiological characteristics of mammalian cortex}
 
-Linden and Schreiner \cite{linden_2003}
+\textcolor{green}{Linden and Schreiner \cite{linden_2003}
 highlighted that although auditory cortical circuits have some unique characteristics which will require special attention,
 their similarities with other sensory regions--such as visual or somatosensory cortex--turn out to be categorical.
 First, at the sensory level, the cochear one-dimensional frequency map could be analogue to the two-dimensional spatial maps which are found
@@ -333,9 +333,9 @@ respectively.
 Frequency tuning curves in the auditory system could correspond to inhibition of spatial surrounding boundaries in visual and somatosensory receptive fields.
 A correspondence could be drawn between amplitude modulation rate in the auditory system and flicker sensitivity in the visual system, or
 whisker vibration sensitivity in the somatosensory system.
-Finally, auditory receptive fields tuned for frequency-sweep, could be analogous to visual and somatosensory motion sensitivity.
+Finally, auditory receptive fields tuned for frequency-sweep, could be analogous to visual and somatosensory motion sensitivity}.
 
-Compelling physiological studies have shown that \glsfirst{a1} shares common structural
+\textcolor{green}{Compelling physiological studies have shown that \glsfirst{a1} shares common structural
 characteristics with other sensory cortices.
 In such sense, thalamo-cortical circuits rewired to receive
 visual signals in live ferret auditory cortex,
@@ -349,11 +349,11 @@ orientation preference and complex and simple receptive fields
 \cite{Sur1437, doi:10.1002/(SICI)1096-9861(19981026)400:3<417::AID-CNE10>3.0.CO;2-O, Roe1992VisualPR}.
 Retinotopic maps, in terms of orientation tuning with lateral connectivity between
 orientation domains, emerge in superficial layers of the rewired
-auditory cortex \cite{Roe818, Sharma2000InductionOV}.
+auditory cortex \cite{Roe818, Sharma2000InductionOV}}.
 
-The above data suggest the existence of neuronal circuitry with similar processing capabilities for different modalities. Consequently, we gather physiological and anatomical characteristics found in cortical tissue in general which we foresee as relevant for phonetic perception invariance and generalization.
+\textcolor{green}{The above data suggest the existence of neuronal circuitry with similar processing capabilities for different modalities. Consequently, we gather physiological and anatomical characteristics found in cortical tissue in general which we foresee as relevant for phonetic perception invariance and generalization}.
 
-One of the main neuroanatomical features of brain cortex in mammals is that cortical cells are aligned into restricted domains for common receptive field locations. These alignments are called \glspl{cc}~\cite{mountcastle_1955, mountcastle_1957, hubel_1962, hubel_1968}. Within \glspl{cc}, cortical mini-columns are clusters of cells which respond to stimuli with similar characteristics (Fig. \ref{fig:Biological}). In addition, cortical columns are connected within and between different regions in cortical tissue forming a complex and yet organized connectivity network~\cite{mountcastle_1997}. 
+One of the main neuroanatomical features of brain cortex in mammals is that \textcolor{red}{cortical cells are spacially arranged into domains defined by common receptive field locations}. These alignments are called \glspl{cc}~\cite{mountcastle_1955, mountcastle_1957, hubel_1962, hubel_1968}. Within \glspl{cc}, cortical mini-columns are clusters of cells which respond to stimuli with similar characteristics (Fig. \ref{fig:Biological}). In addition, cortical columns are connected within and between different regions in cortical tissue forming a complex and yet organized connectivity network~\cite{mountcastle_1997}. 
 
 \begin{figure}[h!]
     \centering
@@ -365,13 +365,11 @@ One of the main neuroanatomical features of brain cortex in mammals is that cort
     \label{fig:Biological}
 \end{figure}
 
-\pagebreak
-
 One of the functional properties found in many of these networks is adaptation to contextual stimuli \cite{KRAUSE201436,doi:10.1167/16.13.1}. This mechanism is thought to enhance efficiency in the codification of sensory information. For instance, a reduction in the responses to frequent sounds by means of inhibitory networks, may enhance cortical sensitivity to rare sounds that may represent unexpected events~\cite{Natan2015ComplementaryCO,nachum_2003,Javitt11962}.
 
 Finally, recent findings in neuroscience show that mammalian cortex processes information by means of \glspl{sdr}~\cite{barth_2012}. This mechanism allows robust and low-error-rate discrimination of stimuli representations minimizing the neuronal activation during the task in relation to the neural resources available for the representation~\cite{ahmad_2016}. Hawkins et al. \cite{hawkins_2016} hypothetize that one of the mechanisms that might be involved in cortical networks in order to achieve \glspl{sdr} implies the extended depolarization of the soma as the result of independent dendritic \gls{nmda} branch activations produced by the excitation of certain number of distal synapses~\cite{antic_2010, major_2013}.
 
-In the present work the above mentioned anatomical and neurophysiological features of the mammalian cortex are gathered as potentially relevant in order to attain phonetic invariance in the mammalian auditory cortex. Our pyramidal neuron model dissociates proximal from distal dendritic branches (Fig.~\ref{fig:PyramidalCell}). Proximal dendrites act as a homogeneous set receiving only afferent information. Information in proximal dendrites determines a bunch of neural units in a \gls{cc} which could be activated depending on the previous activations in the same as well as in neighboring \glspl{cc}.
+\textcolor{green}{In the present work the above mentioned anatomical and neurophysiological features of the mammalian cortex are gathered as potentially relevant in order to attain phonetic invariance in the mammalian auditory cortex. Our pyramidal neuron model dissociates proximal from distal dendritic branches (Fig.~\ref{fig:PyramidalCell}). Proximal dendrites act as a homogeneous set receiving only afferent information. Information in proximal dendrites determines a bunch of neural units in a \gls{cc} which could be activated depending on the previous activations in the same as well as in neighboring \glspl{cc}}.
 
 \begin{figure}[h!]
     \centering
@@ -386,9 +384,9 @@ In the present work the above mentioned anatomical and neurophysiological featur
     \label{fig:PyramidalCell}
 \end{figure}
 
-Distal dendrites receive only lateral and apical information acting as independent detectors. Distal dendritic information pre-activates neural units putting them in a predictive state in order to receive future afferent information.
+\textcolor{green}{Distal dendrites receive only lateral and apical information acting as independent detectors. Distal dendritic information pre-activates neural units putting them in a predictive state in order to receive future afferent information}.
 
-We test those principles paying special attention to temporal dynamics of speech, which play the most important role in linguistic contrasts~\cite{doi:10.1098/rstb.1992.0070}. We use a completely unsupervised and biologically inspired computational model which mimics incidental early human phonetic acquisition. Our model returns phonetic classification accuracy levels similar to those of state-of-the-art deep pattern classification approaches. We therefore propose an alternative path towards addressing phonetic discrimination based on observing structural and functional properties present in the mammalian cortex.
+\textcolor{green}{We test those principles paying special attention to temporal dynamics of speech, which play the most important role in linguistic contrasts~\cite{doi:10.1098/rstb.1992.0070}}. We use a completely unsupervised and \textcolor{red}{biologically-inspired computational model} \textcolor{blue}{which mimics incidental early human phonetic acquisitions}. \textcolor{red}{Our model produces levels of phonetic classification accuracy} similar to those of state-of-the-art deep pattern classification approaches. We therefore propose an alternative path towards addressing phonetic discrimination based on observing structural and functional properties present in the mammalian cortex.
 
 
 
@@ -425,7 +423,7 @@ using \gls{festival} Synthesis \cite{festival2014}.
 
 %\todo[inline]{Silvio: can not see how these 15 words generate 500 words. Either I am missing something obvious or we need additional explanations}
 
-We generate a cross synthesizer standard mark up language file with SABLE \cite{sable}.
+We generate a \textcolor{red}{cross synthesizer mark-up-language file} with SABLE \cite{sable}.
 In this file, we instruct \gls{festival} to generate a corpus with 500 words from a vocabulary of
 5 words uttered by 10 different voices (8 males and 2 females) available from the synthesizer.
 
@@ -477,7 +475,7 @@ In order to produce the inputs from auditory streams we base on \gls{mrstsa}~\ci
 \subsubsection*{Model Description}
 \label{model-description}
 
-The \gls{cstm} consists of two parts: The \gls{el} and the \gls{mrstsa}.  
+\textcolor{red}{The \gls{cstm} consists of two parts: The \glsfirst{mrstsa} layer and the \glsfirst{el}}.
 
 The algorithm \gls{mrstsa}, which processes the sound waves to feed inputs to the \gls{el}, is a technique inspired by Chi T. et al. \cite{chi_2005}. In their work, accumulating experimental findings from the central auditory system were exploited demonstrating its applications in the objective evaluation of speech intelligibility. As the authors pointed out, the model was not biophysical in spirit, but rather it abstracted from the physiological data an interpretation which was likely to be relevant in the design of sound engineering systems. In our \gls{mrstsa} implementation, we follow main guidelines from the higher cortical representations developed in \cite{chi_2005}.
 
@@ -520,9 +518,9 @@ from narrow to broad scales spectrally. The \glspl{strf}
 of these filters are also centered at
 different frequencies along the tonotopic axis.
 
-In the present work, since we prompt a parsimonious incorporation of neurophysiological
+In the present work, \textcolor{red}{since we aim to integrate} neurophysiological
 properties--mainly centered in cortical features--we followed the main guidelines in the implementation of the cortical section of such model. 
-As shown in Fig.~\ref{fig:MRSTSA}, we implemented the initial stage in our model with the application of \gls{fft} to the audio vector
+\textcolor{blue}{As shown in Fig.~\ref{fig:MRSTSA}}, we implemented the initial stage in our model with the application of \gls{fft} to the audio vector
 with a different sample window for each resolution.
 We then extracted the power spectral density from each resolution.
 In this way we obtained a multiresolution spectral analysis of the audio signal,
@@ -536,16 +534,16 @@ in order to represent the spectral analysis performed by the cochlear filter ban
 Then, we convolved each resolution obtained in the last step along its tonotopic axis
 with a complex multiresolution function whose real part
 was a symmetric Mexican hat function and its imaginary part was its antisymmetric Hilbert transform.
-With this strategy we incorporated the phenomena of symmetry \cite{shamma_1993}, bandwidth \cite{schreiner_1990}
+\textcolor{red}{With this strategy we simulate the phenomena} of symmetry \cite{shamma_1993}, bandwidth \cite{schreiner_1990}
 and frequency modulation selectivity \cite{shamma_1993,heil_1992,mendelson_1985}
 found in \gls{a1} and incorporated in the original algorithms \cite{wang_1995}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{MRSTSA.png}
-    \caption{\glsfirst{mrstsa} algorithm. Sound waves are processed by \glspl{fft} with different time windows, then each spectrum is processed by
+    \caption{\textcolor{blue}{\glsfirst{mrstsa} algorithm. Sound waves are processed by \glspl{fft} with different time windows, then each spectrum is processed by
     a \glsfirst{mfb} and each resolution is convolved with a complex signal with a different coefficient. Then, each filter coefficient
-    is obtained computing the modulus from the convolution and then applying a authomatic gain control.}
+    is obtained computing the modulus from the convolution and then applying a authomatic gain control.}}
     \label{fig:MRSTSA}
 \end{figure}
 
@@ -629,22 +627,23 @@ Fig \ref{fig:PyramidalCell} shows the connectivity profile in such units.
 ~\\
 
 In reference to proximal connections in the \gls{el}, each neural unit in a \gls{cc} has the same set of
-proximal connections to the \gls{mrstsa} (Fig \ref{fig:EncoderProximalConnections}).
+proximal connections to the \gls{mrstsa} \textcolor{blue}{(Fig \ref{fig:EncoderProximalConnections})}.
 Such connections constitute a multidimensional space of real numbers.
 In order to acquire the statistical distribution in such multidimensional real space we use
-a multidimensional \gls{som} in each cortical column (Alg.~\ref{csom_proximal_synapses}).
+a multidimensional \gls{som} in each cortical column \textcolor{blue}{(Alg.~\ref{csom_proximal_synapses})}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{EncoderProximalConnections.png}
-    \caption{\glsfirst{el} proximal connections. Each \gls{cc} in the \gls{el}--exemplified here in red--has its receptive field over the \gls{mrstsa}--in yellow.
+    \caption{\textcolor{blue}{\glsfirst{el} proximal connections. Each \gls{cc} in the \gls{el}--exemplified here in red--has its receptive field over the \gls{mrstsa}--in yellow.
     (A) A set of \gls{mrstsa} components--in green inside the receptive field--is randomly chosen to be connected with such \gls{cc}.
-    (B) Each neural unit in such \gls{cc} is connected with the same set of \gls{mrstsa} components.}
+    (B) Each neural unit in such \gls{cc} is connected with the same set of \gls{mrstsa} components.}}
     \label{fig:EncoderProximalConnections}
 \end{figure}
 
+
 \begin{algorithm}
-	\caption{\texttt{Plasticity in Proximal Synapses}. \glsfirst{som} algorithm.}
+	\caption{\textcolor{blue}{\texttt{Plasticity in Proximal Synapses}. \glsfirst{som} algorithm.}}
 \label{csom_proximal_synapses}
 \begin{algorithmic}[1]
 	\STATE{given an \texttt{input} vector, find the nearest \texttt{unit} to such \texttt{input} vector in the input space}
@@ -748,13 +747,13 @@ A cell unit inside the red \gls{cc} ends up with as many dendritic branches as g
 
 The term \emph{potential connection} is used, because it describes a pair of neural units linked by its physical location and dendritic and axonal disposition in cortical tissue (Fig. \ref{fig:DistalDendrites} C). However, an effective connectivity between such neurons will depend upon their sequential pattern of activation which will establish developed synapses between them. If two neural units--a red one and a yellow one in Fig. \ref{fig:DistalDendrites} D--are linked by means of a distal potential connection--produced by a synapse between a distal dendritic branch from the red one and an axonal branch from the yellow one--such connection will grow only if there is a sequential activation of the red cell after an activation of the yellow cell, in two consecutive time steps. If such phenomenon does not repeat itself over time, such synapse will decrease its strength with respect to other synapses in the dendritic branch in the red cell in Fig. \ref{fig:DistalDendrites} D. A simultaneous activation in both neural units--the red one and the yellow one in Fig. \ref{fig:DistalDendrites} D--will decrease the strength in such potential connection.
 
-We implemented distal dendritic synaptic plasticity mechanisms by means of an algorithm called \gls{dsom} (Alg. \ref{csom_distal_synapses}).
+We implemented distal dendritic synaptic plasticity mechanisms by means of an algorithm called \gls{dsom} \textcolor{blue}{(Alg. \ref{csom_distal_synapses})}.
 The learning mechanisms implemented on such algorithm simulate neurophysiological phenomena
 such as \gls{stdp}, and homeostatic regulation plasticity in the synaptic strength regulation in
 distal dendritic branches.
 
 \begin{algorithm}
-	\caption{\texttt{Plasticity in Distal Synapses}. This algorithm accounts for \glsfirst{stdp} and homeostatic regulation phenomenon in distal dendritic synapses.}
+	\caption{\textcolor{blue}{\texttt{Plasticity in Distal Synapses}. This algorithm accounts for \glsfirst{stdp} and homeostatic regulation phenomenon in distal dendritic synapses.}}
 \label{csom_distal_synapses}
 \begin{algorithmic}[1]
 	\FOR{every active \texttt{unit} in this cortical \texttt{column}}
@@ -781,7 +780,7 @@ distal dendritic branches.
 \end{algorithmic}
 \end{algorithm}
 
-Basically, Alg.~\ref{csom_distal_synapses} updates all distal axonal-dendritic synapses such that those are incremented allways that pre and post-synaptic neural units bicome active in consecutive time steps and decremented when they become active at the same time step. Occasionally, all the synaptic weights belonging to the same dendrite are normalized every certain number of time steps. This normalization is repeated for all neural units and for all dendritic branches in each neural unit whose sum of synaptic weights is beyond unity.
+\textcolor{blue}{Basically, Alg.~\ref{csom_distal_synapses} updates all distal axonal-dendritic synapses such that those are incremented allways that pre and post-synaptic neural units bicome active in consecutive time steps and decremented when they become active at the same time step. Occasionally, all the synaptic weights belonging to the same dendrite are normalized every certain number of time steps. This normalization is repeated for all neural units and for all dendritic branches in each neural unit whose sum of synaptic weights is beyond unity}.
 
 
 
@@ -842,14 +841,14 @@ From the group of units that tend to be depolarized by current afferent inputs f
 only a reduced sub-set of those units are likely to fire in the previous contextual firing history
 in the \gls{el}--Fig. \ref{fig:Activation} C left.
 
-In case there is no context, that is, not enough number of the units which tend to be depolarized by afferent inputs
-is partially depolarized by previous--lateral and apical--activations--Fig. \ref{fig:Activation} B right--,
+In case there is no context, that is, \textcolor{red}{if not enough number of the units normally depolarized by afferent inputs
+are partially depolarized by previous--lateral and apical--activations}--Fig. \ref{fig:Activation} B right--,
 all units in the afferent excited clusters will be active, covering more hypotheses for next inputs--Fig. \ref{fig:Activation} C right.
 
-Such activation mechanism is depicted in Alg. \ref{csom_activation}. In Alg. \ref{csom_activation} (Part 1) a ranking is established among neural units--inside a \gls{cc}--in terms of its afferent excitability, given the afferent inputs (lines 1 and 2). The \emph{number of afferently excited units} makes reference to the maximum number of  units that can be activated by the afferent input in a \gls{cc} and \emph{minimum number of active units} makes reference to the number of units that will be active in a \gls{cc} if a \gls{sdr} is achieved as a result of optimal prediction (lines 3 and 4 respectively).
+\textcolor{blue}{Such activation mechanism is depicted in Alg. \ref{csom_activation}. In Alg. \ref{csom_activation} (Part 1) a ranking is established among neural units--inside a \gls{cc}--in terms of its afferent excitability, given the afferent inputs (lines 1 and 2). The \emph{number of afferently excited units} makes reference to the maximum number of  units that can be activated by the afferent input in a \gls{cc} and \emph{minimum number of active units} makes reference to the number of units that will be active in a \gls{cc} if a \gls{sdr} is achieved as a result of optimal prediction (lines 3 and 4 respectively)}.
 
 \begin{algorithm}
-	\caption{\texttt{Units activation (Part 1)}. This algorithm establishes the activation rules in a \gls{csom} object.}
+	\caption{\textcolor{blue}{\texttt{Units activation (Part 1)}. This algorithm establishes the activation rules in a \gls{csom} object.}}
 \label{csom_activation}
 \begin{algorithmic}[1]
 	\STATE{\texttt{distances} = given an \texttt{input} vector find the euclidean distance each \texttt{unit} has to such \texttt{input} in the input space from proximal afferent synapses}
@@ -888,17 +887,17 @@ Such activation mechanism is depicted in Alg. \ref{csom_activation}. In Alg. \re
 \end{algorithmic}
 \end{algorithm}
 
-If randomness is enabled, \emph{number of afferently excited units} units is chosen at random by means of a discrete distribution whose probabilities are the afferent excitation of each unit. If randomness is disabled, \emph{number of afferently excited units} first units are chosen from the ranking of afferently excited units (lines 5 to 9).
+\textcolor{blue}{If randomness is enabled, \emph{number of afferently excited units} units is chosen at random by means of a discrete distribution whose probabilities are the afferent excitation of each unit. If randomness is disabled, \emph{number of afferently excited units} first units are chosen from the ranking of afferently excited units (lines 5 to 9)}.
 
-From line 10 to 25 each neural unit accumulates distal--lateral and apical--excitation in order to determine its partial depolarization from units which were active in the previous time step. For each neural unit in a \gls{cc}, for each distal dendrite in such unit and for each active unit in such distal dendrite the algorithm looks for coincidences between some potential connection in such distal dendrite in the neural unit and the active unit in such distal dendrite. That is, in line 15, the algorithm ask if there is coincidence between some potential connection in this distal dendrite inside the unit and the neural unit activated in the previous time step in the \gls{cc} linked by such distal dendrite. If there is coincidence, the value of the synaptic weight in such potential connection is accumulated in a dendrite accumulator. After all active units are examined for this dendrite, if the dendrite accumulator is greater than certain threshold, such dendrite is considered active and the total response of the unit is incremented in one.
+\textcolor{blue}{From line 10 to 25 each neural unit accumulates distal--lateral and apical--excitation in order to determine its partial depolarization from units which were active in the previous time step. For each neural unit in a \gls{cc}, for each distal dendrite in such unit and for each active unit in such distal dendrite the algorithm looks for coincidences between some potential connection in such distal dendrite in the neural unit and the active unit in such distal dendrite. That is, in line 15, the algorithm ask if there is coincidence between some potential connection in this distal dendrite inside the unit and the neural unit activated in the previous time step in the \gls{cc} linked by such distal dendrite. If there is coincidence, the value of the synaptic weight in such potential connection is accumulated in a dendrite accumulator. After all active units are examined for this dendrite, if the dendrite accumulator is greater than certain threshold, such dendrite is considered active and the total response of the unit is incremented in one}.
 
-Each neural unit ends up with an excitation value due to its distal dendrites. The unit distances vector is element wise divided by distal dendritic excitations vector to get the updated distances and an updated ranking of the units (lines 26 and 27). In this way, units with more distal excitation will decrease its distance more and will be put in a more favorable place in the ranking in order to be activated.
+\textcolor{blue}{Each neural unit ends up with an excitation value due to its distal dendrites. The unit distances vector is element wise divided by distal dendritic excitations vector to get the updated distances and an updated ranking of the units (lines 26 and 27). In this way, units with more distal excitation will decrease its distance more and will be put in a more favorable place in the ranking in order to be activated}.
 
-In Alg. \ref{csom_activation} (Part 2) the minimum updated distance is found in the group of afferently excited units. Then, a set of units--inside the group of afferently excited units--is identified which have such minimum updated distance. While the number of identified units is less than \emph{minimum number of active units}, the next   minimum updated distance is found in the group of afferently excited units and a new set of units--inside the group of afferently excited units--is identified which have such next minimum updated distance. This new set is added to the previous one until the number of units in this accumulative set is greater than or equal to the minimum number of active units.
+\textcolor{blue}{In Alg. \ref{csom_activation} (Part 2) the minimum updated distance is found in the group of afferently excited units. Then, a set of units--inside the group of afferently excited units--is identified which have such minimum updated distance. While the number of identified units is less than \emph{minimum number of active units}, the next   minimum updated distance is found in the group of afferently excited units and a new set of units--inside the group of afferently excited units--is identified which have such next minimum updated distance. This new set is added to the previous one until the number of units in this accumulative set is greater than or equal to the minimum number of active units}.
 
 \begin{algorithm}
 \ContinuedFloat
-\caption{\texttt{Units activation (Part 2)}. This algorithm establishes the activation rules in a \gls{csom} object.}
+\caption{\textcolor{blue}{\texttt{Units activation (Part 2)}. This algorithm establishes the activation rules in a \gls{csom} object.}}
 \label{csom_activation}
 \begin{algorithmic}[1]
 	\STATE{new \texttt{distances} = get the updated \texttt{distances} elements whose indexes are in excited \texttt{units}}
@@ -927,7 +926,7 @@ In Alg. \ref{csom_activation} (Part 2) the minimum updated distance is found in 
 \end{algorithmic}
 \end{algorithm}
 
-The functional result of Alg. \ref{csom_activation} is that there must be a sufficient amount of--partially and previously depolarized--neural units inside the afferently activated cluster of units in order to get a \gls{sdr} pattern of activation. Otherwise, the \gls{cc} will end up with a massive activation pattern, a \glsfirst{mfe} in which more than a \emph{minimum number of active units} will be active. In the case of the occurrence of a \gls{mfe}, the synaptic plasticity is modulated in order to form stronger synapses of those neural units activated during such event. 
+\textcolor{blue}{The functional result of Alg. \ref{csom_activation} is that there must be a sufficient amount of--partially and previously depolarized--neural units inside the afferently activated cluster of units in order to get a \gls{sdr} pattern of activation. Otherwise, the \gls{cc} will end up with a massive activation pattern, a \glsfirst{mfe} in which more than a \emph{minimum number of active units} will be active. In the case of the occurrence of a \gls{mfe}, the synaptic plasticity is modulated in order to form stronger synapses of those neural units activated during such event}.
 
 Each neural unit in a \gls{cc} establishes its state of partial depolarization based on the contribution from
 distal dendritic branches from lateral and apical connections.
@@ -1026,6 +1025,10 @@ That is, each neural unit in a \gls{cc} ends up with 72 lateral dendritic branch
 (432 distal potential synapses per cellular unit).
 Such potential synapses are randomly chosen for each neural cell and for each dendritic branch in the cell during the Encoder initialization procedure.
 The \gls{el} consists of 50625 cellular units with 1569375 proximal synapses and 21870000 distal synapses.
+\textcolor{blue}{Such specifications state the number of free parameters of the model, but it is important to highlight that distal synapses represent
+potential connections from which only a small percentage has a significant synaptic weight as to be considered as an established connection.
+Weak synapses are periodically pruned by means of homeostatic processes in the network leaving distal dendrites with a sparse connectivity in the receptive fields.
+Typical sparseness in such connectivity matrices could exceed the 90\%.}
 
 We train the \gls{el} using a 500 word corpora generated by the procedure described in section \nameref{CorpGen}.
 The training procedure consists of 4 stages and for each stage the \gls{el} receives the same corpus 4 times.
@@ -1258,7 +1261,7 @@ Straight lines in Fig. \ref{fig:Strong_Weak} (left) show an initially good stron
 
 \subsubsection*{Experiments}
 
-In the present work, we studied the level of invariance in the phonetic features abstracted by the \gls{el}, by means of comparing such representations with the multiresolution spectro-temporal auditory features returned by the \gls{mrstsa} algorithm. To this end, we evaluated the features returned by each algorithm in different word classification tasks. In order to asses the word classification performance in each algorithm, we used \gls{svm} technique--section \nameref{model-implementation}--with  the experimental setup depicted in Fig. \ref{fig:Experiment}.
+In the present work, we studied the level of invariance in the phonetic features abstracted by the \gls{el}, by means of comparing such representations with the multiresolution spectro-temporal auditory features returned by the \gls{mrstsa} algorithm. To this end, we evaluated the features returned by each algorithm in different word classification tasks. \textcolor{red}{In order to asses word classification performance} in each algorithm, \textcolor{red}{we used the \gls{svm} technique}--section \nameref{model-implementation}--with  the experimental setup depicted in Fig. \ref{fig:Experiment}.
 
 \begin{figure}[h!]
     \centering
@@ -1290,7 +1293,7 @@ Trisyllabic Words  & 97.6\% & 98\%          \\ \hline
 
 \pagebreak
 
-In a second stage, we ran the \gls{el} in inference mode again, but this time we affected the original corpus by means of different kind of variances. We tested the performances of the--already trained--classifiers in the presence of the features returned by the algorithms in response to the corpus affected by the variances which we introduced to original corpora by means of Audacity \cite{audacity}. The variances introduced to the original corpus included white noise, reverberation and pitch variations. 
+In a second stage, we ran the \gls{el} in inference mode again, but \textcolor{red}{this time the original corpus was manipulated with several types of acoustic variants (white noise, reverberation and pitch variations), generated using the Audacity software}. We tested the performances of the--already trained--classifiers in the presence of the features returned by the algorithms in response to the corpus affected by the \textcolor{red}{acoustic variants} which we introduced to original corpora by means of Audacity \cite{audacity}. The \textcolor{red}{acoustic variants} introduced to the original corpus included white noise, reverberation and pitch variations. 
 
 
 
@@ -1309,7 +1312,7 @@ The classification performances are shown in Figs. \ref{fig:MONO_ACC}, \ref{fig:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{MONO_ACC.png}
-    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different variances introduced to the original signals
+    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different \textcolor{red}{acoustic variants} introduced to the original signals
     for \textbf{monosyllabic words}.
     White Noise 1 determines a \gls{snr} average \gls{rms} power rate of 19.8 dB while White Noise 2 13.8 dB.
     Reverberation 30\% determines a \gls{rt} value of 0.61 seconds while Reverberation 60\% determines a \gls{rt} value of 1.78 seconds.
@@ -1320,7 +1323,7 @@ The classification performances are shown in Figs. \ref{fig:MONO_ACC}, \ref{fig:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{DI_ACC.png}
-    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different variances introduced to the original signals
+    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different \textcolor{red}{acoustic variants} introduced to the original signals
     for \textbf{disyllabic words}.
     White Noise 1 determines a \gls{snr} average \gls{rms} power rate of 19.8 dB while White Noise 2 13.8 dB.
     Reverberation 30\% determines a \gls{rt} value of 0.61 seconds while Reverberation 60\% determines a \gls{rt} value of 1.78 seconds.
@@ -1331,7 +1334,7 @@ The classification performances are shown in Figs. \ref{fig:MONO_ACC}, \ref{fig:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{TRI_ACC.png}
-    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different variances introduced to the original signals
+    \caption{\gls{mrstsa} and \gls{el} classification accuracies against different \textcolor{red}{acoustic variants} introduced to the original signals
     for \textbf{trisyllabic words}.
     White Noise 1 determines a \gls{snr} average \gls{rms} power rate of 19.8 dB while White Noise 2 13.8 dB.
     Reverberation 30\% determines a \gls{rt} value of 0.61 seconds while Reverberation 60\% determines a \gls{rt} value of 1.78 seconds.
@@ -1347,7 +1350,7 @@ Regarding white noise, we introduced additive white noise to the original signal
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{Classification.png}
-    \caption{\gls{mrstsa} and \gls{el} classification performances against different variances introduced to the original signals.
+    \caption{\gls{mrstsa} and \gls{el} classification performances against different \textcolor{red}{acoustic variants} introduced to the original signals.
     Mono means monosyllabic words, Di means disyllabic words and Tri means trisyllabic words.
     White Noise 1 determines a \gls{snr} average \gls{rms} power rate of 19.8 dB while White Noise 2 13.8 dB.
     Reverberation 30\% determines a \gls{rt} value of 0.61 seconds while Reverberation 60\% determines a \gls{rt} values of 1.78 seconds.
@@ -1358,12 +1361,12 @@ Regarding white noise, we introduced additive white noise to the original signal
 
 
 Figs. \ref{fig:MONO_ACC}, \ref{fig:DI_ACC} and \ref{fig:TRI_ACC}
-show a 5 way word classification accuracy for mono, di and trisyllabic word corpora affected by
+\textcolor{red}{show a 5-way word classification accuracy} for mono, di and trisyllabic word corpora affected by
 white noise, reverberation and pitch variations.
 As can be seen in the figures, the \gls{el} outperforms the \gls{mrstsa} in all cases.
 Such behavior persists for multisyllabic words.
 
-Fig. \ref{fig:AV_ACC} shows average classification accuracies across all variances for mono, di and trisyllabic words.
+Fig. \ref{fig:AV_ACC} shows average classification accuracies across all \textcolor{red}{acoustic variants} for mono, di and trisyllabic words.
 As can be seen in the figure, according to \textbf{Standard Error} bars, the encoder layer clearly shows
 a sustained superiority across words with different number of syllables.
  
@@ -1371,7 +1374,7 @@ a sustained superiority across words with different number of syllables.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{AV_ACC.png}
-    \caption{Average classification accuracies across all variances for mono, di and trisyllabic words with Standard Error bars.
+    \caption{Average classification accuracies across all \textcolor{red}{acoustic variants} for mono, di and trisyllabic words with Standard Error bars.
     Mono means monosyllabic words, Di means disyllabic words and Tri means trisyllabic words.}
     \label{fig:AV_ACC}
 \end{figure}
@@ -1408,22 +1411,22 @@ In a more recent work, the capacity of \glspl{dmn}--a modification of \glspl{dnn
 In the present work, we reported classification performances of--for example--97.2\% on the \gls{el} vs. 52.4\% on the \gls{mrstsa} for trisyllabic words against 19.8 dB \gls{snr} white noise (Fig. \ref{fig:TRI_ACC}) and performances well above 40\% for mono and trisyllabic words against 13.8 dB \gls{snr} white noise (Figs. \ref{fig:MONO_ACC} and \ref{fig:TRI_ACC}). We also reported that the \gls{el} outperformed the \gls{mrstsa} for all the test conditions (Fig. \ref{fig:AV_ACC}) and that this behavior was sustained through different number of syllables in the words for the vocabularies used in this research (Fig. \ref{fig:AV_ACC}).
 
 Although this is a compelling scenario, we have to be cautious since we cannot ignore important experimental differences from previous research results. First, our training material was very different from that found in previous works. We used corpora generated by synthesized voices instead of standardized \gls{timit} corpora.
-One of our main aims is to mimic early phonetic acquisition in humans, which is incidentally accomplished by infants \cite{Saffran1996StatisticalLB}.
-Given the high quality of the voices synthesized by \gls{festival} \cite{festival2014} and its flexibility in order to compose different kind of corpora--even with words that do not exist in any language--we considered that this was an appropriate initial experimental procedure to test our approach in a context of incidentally acquired phonotactic rules. 
+\textcolor{blue}{Our main aims is to mimic early phonetic acquisition in humans, which is incidentally accomplished by infants \cite{Saffran1996StatisticalLB}}.
+Given the high quality of the voices synthesized by \gls{festival} \cite{festival2014} and its flexibility in order to compose different kind of corpora--even with words that do not exist in any language--we considered that this was an appropriate initial experimental procedure to test our approach \textcolor{blue}{in a context of incidentally acquired phonotactic rules}. 
 Second, we pursued multisyllabic words classification tasks in contrast to the phone classification experiments carried out in previous research,
 since we mainly aimed to test the dynamic sequential capability of our model to acquire the phonotactic rules behind the training vocabularies. 
 Finally, we reported results on 5-way classification tasks vs. performance on 39-way classification tasks in \cite{Lee:2009:UFL:2984093.2984217}. 
 On the one hand, this last difference may have acted in favour of our approach considering that it is easier to classify one category among 5 than one among 39.
 On the other hand, it is important to highlight that previous works have had more extended training material with more vocabularies, more speakers, etc.
 In our case, we presented more difficult training conditions, since our model was trained with 500 words from a vocabulary of just 5 words uttered by 10 voices.
-Despite the small sample size, the performance obtained by our neurocomputational model exhibits a significant level of phonetic generalization with the capacity to acquire phonotactic rules and to generalize to novel environmental contexts. This is a much more biologically accurate scenario than those settled by other approaches, in which models are trained using millions of examples. We base our claims in a context in which 8-month-old infants can acquire the phonotactic rules immersed in the auditory input streams with only 2 minutes of exposure (180 words in total, from a vocabulary of four three-syllable words) \cite{Saffran1996StatisticalLB}.
+Despite the small sample size, the performance obtained by our neurocomputational model exhibits a significant level of phonetic generalization with the capacity to acquire phonotactic rules and to generalize to novel environmental contexts. \textcolor{blue}{This is a much more biologically accurate scenario than those settled by other approaches, in which models are trained using millions of examples. We base our claims in a context in which 8-month-old infants can acquire the phonotactic rules immersed in the auditory input streams with only 2 minutes of exposure (180 words in total, from a vocabulary of four three-syllable words) \cite{Saffran1996StatisticalLB}}.
 
 We are aware that more tests--in different scenarios--with different and standardized corpora (such as \gls{timit}) will be needed to analyze the capacities of our approach more deeply.
-Nevertheless, our main objective in the present work was to assess the sequential phonetic invariance exhibited by the \gls{el} under strictly controlled experimental conditions in which we precisely knew the levels of noise, reverberation and pitch variations with which the stimulus was affected. The \gls{el} training material included only the original corpora with 500 words, but more importantly, the \gls{el} was never exposed--during learning--to the disturbances used to test its classification performance. The experimental profile applied in this work (Fig. \ref{fig:Experiment}) makes it clear that the \gls{el} is completely unsupervised and that all supervision is limited to the \gls{svm} algorithm. Furthermore, the \gls{el} does not optimize its synaptic weight updates using gradient descent backpropagating errors from arbitrarily inserted loss functions. This is a fundamental point to demonstrate the biological plausibility of our implementation since phonotactic constraints in a human language are learned incidentally \cite{BRENT199693,saffran_1997} and therefore, no supervision could be supported under such behavioral circumstances. 
+Nevertheless, our main objective in the present work was to assess the sequential phonetic invariance exhibited by the \gls{el} under strictly controlled experimental conditions in which we precisely knew the levels of noise, reverberation and pitch variations with which the stimulus was affected. The \gls{el} training material included only the original corpora with 500 words, but more importantly, the \gls{el} was never exposed--during learning--to the disturbances used to test its classification performance. The experimental profile applied in this work (Fig. \ref{fig:Experiment}) makes it clear that the \gls{el} is completely unsupervised and that all supervision is limited to the \gls{svm} algorithm. \textcolor{blue}{Furthermore, the \gls{el} does not optimize its synaptic weight updates using gradient descent backpropagating errors from arbitrarily inserted loss functions}. This is a fundamental point to demonstrate the biological plausibility of our implementation since phonotactic constraints in a human language are learned incidentally \cite{BRENT199693,saffran_1997} and therefore, no supervision could be supported under such behavioral circumstances. 
 
 %In future research, we plan to enrich our model's \gls{mrstsa} representation by unlinking symmetry and bandwidth sensitivity, incorporating a more sophisticated multiresolution temporal windowing and a more biological cochlear filter bank, as well as adding sound level codification and also sub-cortical physiological characteristics present in the cochlear nucleus to add more frequency selectivity.
 
-In future researches, emergent dynamic properties could arise from the addition of subsequent cortical layers--beyond the \glsfirst{el}--in the processing pipeline of this model.  In this way we will be able to implement backward distal apical dendrites, which will bring context through an unsupervised hierarchical implementation. Even though such feedback could be beneficial in an incidental phonetic acquisition context, modeling adult phonetic competence could possibly require the implementation of more complex hypotheses in our model. The incorporation of biologically accurate cost functions in order to feed back any kind of activation error would require precise biological hypotheses. Should those errors be scalar signals (reinforcement mechanisms) or should they be vectors (supervised mechanisms)? Should they come from the same modality or should they be gathered from a different one? Should they vary across different cortical patches or should they vary during temporal development? \cite{10.3389/fncom.2016.00094}. In any case, a supervised mechanism assisted from differen cortical areas in a multimodal fashion could be a biologically accurate hypothesis taking into account that iconic gestures boost speech comprehension under adverse listening conditions \cite{HOLLE2010875} or that functional connectivity across different cortical areas facilitates speech comprehension when the intelligibility of the speech signal is reduced~\cite{Obleser2283}. Yet, beyond the cost functions hypotheses, it is also important to determine the algorithms used to feed back activation errors. Regardless of the fact that gradient descent is--at first glance--too complex to be implemented by cortical tissue, significant researches support the idea that credit assignment--the ultimate goal of backpropagation--could be a phenomenon present in the brain \cite{Guerguiev2017TowardsDL}. Furthermore, in \cite{Lillicrap_2016} the authors presented a mechanism that performs backpropagation relaxing the backward connectivity architecture and assigning blame by multiplying errors by random synaptic weights. Apart from the above, there is no proof that the brain implements gradient descent as it is implemented in current \glspl{dnn} and novel strategies--with more biological plausibility--could arise from the scientific community in the future.
+\textcolor{blue}{In future researches, emergent dynamic properties could arise from the addition of subsequent cortical layers--beyond the \glsfirst{el}--in the processing pipeline of this model.  In this way we will be able to implement backward distal apical dendrites, which will bring context through an unsupervised hierarchical implementation. Even though such feedback could be beneficial in an incidental phonetic acquisition context, modeling adult phonetic competence could possibly require the implementation of more complex hypotheses in our model. The incorporation of biologically accurate cost functions in order to feed back any kind of activation error would require precise biological hypotheses. Should those errors be scalar signals (reinforcement mechanisms) or should they be vectors (supervised mechanisms)? Should they come from the same modality or should they be gathered from a different one? Should they vary across different cortical patches or should they vary during temporal development? \cite{10.3389/fncom.2016.00094}. \textcolor{green}{In any case, a supervised mechanism assisted from differen cortical areas in a multimodal fashion could be a biologically accurate hypothesis taking into account that iconic gestures boost speech comprehension under adverse listening conditions \cite{HOLLE2010875} or that functional connectivity across different cortical areas facilitates speech comprehension when the intelligibility of the speech signal is reduced~\cite{Obleser2283}}. Yet, beyond the cost functions hypotheses, it is also important to determine the algorithms used to feed back activation errors. Regardless of the fact that gradient descent is--at first glance--too complex to be implemented by cortical tissue, significant researches support the idea that credit assignment--the ultimate goal of backpropagation--could be a phenomenon present in the brain \cite{Guerguiev2017TowardsDL}. Furthermore, in \cite{Lillicrap_2016} the authors presented a mechanism that performs backpropagation relaxing the backward connectivity architecture and assigning blame by multiplying errors by random synaptic weights. Apart from the above, there is no proof that the brain implements gradient descent as it is implemented in current \glspl{dnn} and novel strategies--with more biological plausibility--could arise from the scientific community in the future}.
 
 We are also planning to add more biological plausibility by means of increasing the number of cells per \gls{cc} with massively scaling \gls{hpc} simulations and using a \gls{gsom} per \gls{cc} in order to incorporate neural resource recruitment specialization in each \gls{cc} depending on the statistical dispersion of its stimuli \cite{Meyer19113}. For instance, a four-dimensional array of neural units can be employed to simulate cortical columns of approximately 34,000 cells. In this way, thousands of cortical columns can be organized in multidimensional arrays. Using a leadership-class supercomputer (e.g. resources from the Top 500 computing list, \url{top500.org}), and assuming one cortical column per compute node with 64 cores, we could be running 527 neural units per thread in a CPU. Furthermore, configuring a three-dimensional array of 1000 cortical columns per cortical layer, a model of 4 layers could be running on approximately 256,000 threads. Such simulations could allow us to leverage phonotactic acquisition as well as phonetic generalization capacities beyond the levels reported in this paper.
 
@@ -1532,7 +1535,7 @@ We are also planning to add more biological plausibility by means of increasing 
 
 %Sed non aliquet felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo justo ac dui pretium imperdiet. Sed suscipit iaculis mi at feugiat. Ut neque ipsum, luctus id lacus ut, laoreet scelerisque urna. Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed. Nam condimentum sem eget mollis euismod. Nullam dui urna, gravida venenatis dui et, tincidunt sodales ex. Nunc est dui, sodales sed mauris nec, auctor sagittis leo. Aliquam tincidunt, ex in facilisis elementum, libero lectus luctus est, non vulputate nisl augue at dolor. For more information, see \nameref{S1_Appendix}.
 
-We demonstrate via a computational simulation that our implementation of the cortical model leverages the performance in word classification tasks under specific environmental conditions (e.g., white noise and reverberation) and for certain variances applied to the auditory stimuli (e.g., pitch variations). The model acquires the phonotactic rules in the input, without any kind of supervised or reinforced optimization procedure, taking only advantage of auto-organized algorithmic properties. We also demonstrate effectiveness in classifying multisyllabic words, which suggests that our implementation of neurophysiological predictive dynamics plus stochastic sparse patterns of activation outperforms the MRSTSA algorithm in terms of phonotactic sequential invariance for disturbances applied to the audio signal. Given these promising results, we posit that neurophysiological and anatomical properties in our model are potentially relevant to the design of artificial intelligence systems and may achieve higher levels of phonetic invariance and generalization than the ones achieved by current deep learning architectures.
+We demonstrate via a computational simulation that our implementation of the cortical model leverages the performance in word classification tasks under specific environmental conditions (e.g., white noise and reverberation) and for certain \textcolor{red}{acoustic variants} applied to the auditory stimuli (e.g., pitch variations). \textcolor{blue}{The model acquires the phonotactic rules in the input, without any kind of supervised or reinforced optimization procedure, taking only advantage of auto-organized algorithmic properties}. We also demonstrate effectiveness in classifying multisyllabic words, which suggests that our implementation of neurophysiological predictive dynamics plus stochastic sparse patterns of activation outperforms the \gls{mrstsa} algorithm in terms of phonotactic sequential invariance for disturbances applied to the audio signal. Given these promising results, we posit that neurophysiological and anatomical properties in our model are potentially relevant to the design of artificial intelligence systems and may achieve higher levels of phonetic invariance and generalization than the ones achieved by current deep learning architectures.
 
 
 %In this paper, we analyze the sequential phonotactic invariant representations of high levels auditory pathway responses to complex phonetic sound stimuli.  We research such representations in relation to potentially relevant features in the auditory cortex. We incorporate such features in a computational model--inside the \gls{el} stage of a model called \gls{cstm}--and use \gls{svm} classification to test its performance for several word classification tasks. We compare our model performance with the performance achieved by the \gls{mrstsa} algorithm. The \gls{el} shows prominent sequential phonotactic acquisition capabilities, outperforming the \gls{mrstsa} algorithm for all the tests performed. Since the experimental profile is designed to asses the level of phonetic generalization on both algorithms, exposing the training material to environmental and pitch disturbances not present during learning, our model shows significant phonetic generalization capacity, leveraging the performance of the \gls{mrstsa}--even when it is seriously impaired. 
