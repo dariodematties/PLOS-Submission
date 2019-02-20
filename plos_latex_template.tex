@@ -1164,7 +1164,7 @@ Then, each \gls{mpi} rank saves all its data with a unique call to \gls{mpi} Wri
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{EncoderParallelization.png}
+    \includegraphics[width=0.75\textwidth]{EncoderParallelization.png}
     \caption{\glsfirst{el} \gls{mpi}+\gls{omp} parallelization. (A) Distribution of \gls{csom} objects in an \gls{el} with
     3 by 8 (24) \glspl{cc} among three \gls{mpi} ranks with three \gls{omp} threads per rank.
     Certain ranks could take care of a different number of
@@ -1224,7 +1224,7 @@ There are two ways to measure the parallel performance of a given application. T
     \includegraphics[width=1.0\textwidth]{Strong_Weak.png}
     \caption{Strong and Weak scaling tests on Cooley nodes. Left: Strong scaling. Run time vs. the number of nodes for different number of threads per node.
 	    The problem size stays fixed but the number of processing elements are increased.
-    Right: Weak scaling. Run time vs. the number of nodes for 8 threads per node.
+    Right: Weak scaling. Run time vs. the number of nodes for different number of threads per node.
     In this case the problem workload assigned to each processing element stays constant and additional elements are used to solve a larger total problem (i.e. a problem that would not fit in the available RAM on a single node).}
     \label{fig:Strong_Weak}
 \end{figure}
