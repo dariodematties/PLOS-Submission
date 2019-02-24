@@ -1127,163 +1127,163 @@ we swept to find the best trained model for each classifier.
 
 
 
-\subsubsection*{Computational Setup}
-\label{Comp_setup}
+%\subsubsection*{Computational Setup}
+%\label{Comp_setup}
 
-We implement our algorithms in standard
-\CC14 using the \gls{oop} paradigm in a set of classes interrelated by inheritance and composition.
-We implement proximal afferent and distal inter-columnar connectivity  
-as well as minimum-maximum margins in afferent synaptic weights in the \glsfirst{el} class.
-We configure such class as a composition of objects of class \glsfirst{csom}.
-The main member in the \gls{el} class is a \gls{stl} vector of \gls{csom} objects.
-A complete diagram of the hierarchical inheritance and compositional structure of the implementation
-can be seen in Fig. \ref{fig:Skeleton}.
+%We implement our algorithms in standard
+%\CC14 using the \gls{oop} paradigm in a set of classes interrelated by inheritance and composition.
+%We implement proximal afferent and distal inter-columnar connectivity  
+%as well as minimum-maximum margins in afferent synaptic weights in the \glsfirst{el} class.
+%We configure such class as a composition of objects of class \glsfirst{csom}.
+%The main member in the \gls{el} class is a \gls{stl} vector of \gls{csom} objects.
+%A complete diagram of the hierarchical inheritance and compositional structure of the implementation
+%can be seen in Fig. \ref{fig:Skeleton}.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Skeleton.png}
-    \caption{Hierarchical Inheritance and Compositional Structure of the Model Implementation.
-    \glsfirst{csom} inherits from \glsfirst{dsom} which inherits from \glsfirst{ssom}.
-    The \glsfirst{el} is formed by the composition of a set of \glspl{csom} gathered
-    in a std::vector \glsfirst{stl} container.}
-    \label{fig:Skeleton}
-\end{figure}
-
-\pagebreak
-
-We parallelize the \gls{el} class by means of a hybrid \gls{mpi}+\gls{omp} paradigm.
-We distribute \glspl{csom} among \gls{mpi} ranks as a deck of cards is distributed among different players.
-Each \gls{mpi} rank ends up with one or more \glspl{csom} and the \glspl{csom} in each rank are distributed
-among different \gls{omp} threads (Fig. \ref{fig:EncoderParallelization} A and B respectively).
-Information among \gls{mpi} ranks must be transferred in each time step.
-We gather all the information corresponding to the \glspl{csom}
-in each rank and then use \gls{mpi} Bcast function to transmit such information
-using a special comunication protocol by means of which we specify the boundaries
-in the information corresponding to each \gls{csom}(Fig. \ref{fig:EncoderParallelization} C).
-By means of this strategy each MPI rank has to call \gls{mpi} Bcast just once
-in order to transmit its data.
-The \gls{el} uses \gls{mpi} I/O parallel file system to save its status in Matlab/Octave format
-(Fig. \ref{fig:EncoderParallelization} D).
-Each \gls{mpi} rank gathers all the data corresponding to its \glspl{csom} in the \gls{el} and
-communicates the part of the file it will use to the other \gls{mpi} ranks, in order to store the data
-without interfering with the other ranks in the \gls{mpi} environment.
-Then, each \gls{mpi} rank saves all its data with a unique call to \gls{mpi} Write. 
-
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\textwidth]{EncoderParallelization.png}
-    \caption{\glsfirst{el} \gls{mpi}+\gls{omp} parallelization. (A) Distribution of \gls{csom} objects in an \gls{el} with
-    3 by 8 (24) \glspl{cc} among three \gls{mpi} ranks with three \gls{omp} threads per rank.
-    Certain ranks could take care of a different number of
-    \glspl{csom} depending on the number of \gls{mpi} ranks as well as the number of \glspl{cc} in the \gls{el}.
-    (B) Each \gls{mpi} rank distributes its \glspl{csom} among different threads in the same fashion.
-    (C) \gls{mpi} \gls{ipc} among different ranks. \gls{ipc} is carried out at each time step since each \gls{mpi} rank 
-    requires the complete \gls{el} output at each time step.
-    Each \gls{mpi} rank broadcasts the information corresponding to its \glspl{cc} to the other ranks in the \gls{mpi}
-    environment.
-    (D) \gls{el} information distribution in a file to save its status.
-    Each \gls{mpi} rank puts the formated data corresponding to its \glspl{csom} in a \gls{stl} stringstream class template.
-    Rank 0 also takes care of the \gls{el} structure, connectivity and parameters.
-    Once each rank has its stringstream with the formated data, it communicates its file view to the other ranks.
-    Then each rank writes its stream of bytes in parallel without interfering with other ranks in the \gls{mpi} environment.
-    An \gls{el} with a different number of ranks can load the same file without affecting the final results.
-    Each rank in the new \gls{el} loads the complete file in a \gls{stl} stringstream class template and then takes the
-    informations that concern it from such structure.}
-    \label{fig:EncoderParallelization}
-\end{figure}
-
-\pagebreak
-
-The implementation has Checkpoint and Restart capacity in its training stage where there is total flexibility
-in terms of the number of ranks with which the execution is restarted. A cortical layer could have been saved
-with $n$ ranks and such layer could be restarted with $m$ ranks without affecting the final results.
-
-
-It is important to mention that the number of \glspl{cc} shown in
-Fig. \ref{fig:EncoderParallelization} is merely illustrative and
-does not reflect the real numbers in terms of computational resources used for this implementation.
-
-%The simulations performed for this work were carried out in an \gls{alcf}
-%Allocation at \gls{anl}.
-%We run the algorithms on Cooley Cluster with simulations using 25 nodes 
-%(9 \glspl{cc} per node and one node per \gls{mpi} rank)
-%and 8 threads per node/rank (almost one thread per \gls{cc}).
-
-We performed all computational experiments on Cooley, a visualization and analysis cluster at Argonne National Laboratory. We ran the simulations using 25 nodes (9 \glspl{cc} per node and one node per \gls{mpi} rank) and 8 OpenMP threads per node/rank (almost one thread per \gls{cc}).
-
-
-
-~\\
-\noindent{\underline{\textit{Initial Strong and Weak Scaling Tests on Cooley}}}
-~\\
-~\\
-
-Beyond the fact that our computational approach is intended to be applied in leadership supercomputers in the future, in the present work an essential step is to test our code in order to see how it uses the resources provided by Cooley Nodes.
-Parallel scalability is a measurement that indicates how efficient is our code when using increasing numbers of parallel processing elements--Nodes or Processes and \glspl{cpu} or Threads on Cooley.
-Fig. \ref{fig:Strong_Weak} shows the scaling capacity of our code in terms of run time vs. number of processing elements used for the task.
-In our tests we always constrain our code to run one \gls{mpi} rank per Cooley node. Each \gls{mpi} rank spreads an specific number of threads through the different \glspl{cpu} in its corresponding node (Fig. \ref{fig:EncoderParallelization} A and B).
-There are two ways to measure the parallel performance of a given application. The measure to be applied will depend on whether the application is \gls{cpu}-bound or memory-bound. Such measurements are referred to as \emph{strong} and \emph{weak} scaling, respectively.
-
-
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Strong_Weak.png}
-    \caption{Strong and Weak scaling tests on Cooley nodes. Left: Strong scaling. Run time vs. the number of nodes for different number of threads per node.
-	    The problem size stays fixed but the number of processing elements are increased.
-    Right: Weak scaling. Run time vs. the number of nodes for different number of threads per node.
-    In this case the problem workload assigned to each processing element stays constant and additional elements are used to solve a larger total problem (i.e. a problem that would not fit in the available RAM on a single node).}
-    \label{fig:Strong_Weak}
-\end{figure}
-
-\pagebreak
-
-
-%~\\
-%\noindent{\textit{Strong Scaling}}
-%~\\
-%~\\
-
-%In strong scaling, it is considered that a program scales linearly when the time spent by the run is reduced in proportion to the number of processing elements used ($N$).
-%If the amount of time to complete a run with 1 processing element is $t_1$, and the amount of time spent to complete the same run with $N$ processing elements is $t_N$, the strong scaling efficiency is~\cite{scaling}:
-
-%\begin{equation}
-	%t_1/(N * t_N) * 100
-%\end{equation}
-
-%In the present work we achieved an efficiency in strong scaling of 70\% with 12 Nodes and 12 threads per node.
-
-%~\\
-%\noindent{\textit{Weak Scaling}}
-%~\\
-%~\\
-
-%In the case of weak scaling, linear scaling is achieved if the run time stays constant while the workload is increased in direct proportion to the number of processors.
-%If the amount of time to complete a run with 1 processing element is $t_1$, and the amount of time to complete $N$ of the same runs with $N$ processing elements is $t_N$, the weak scaling efficiency (as a percentage of linear) is given as~\cite{scaling}:
-
-%\begin{equation}
-	%t_1/t_N * 100
-%\end{equation}
-
-%In the present work we achieved an efficiency in weak scaling of 78.4\% with 64 Nodes and 8 threads per node.
-
-%Fig.~\ref{fig:Strong_Weak_Efficiency} shows strong and weak scaling efficiencies for different number of processing elements--nodes in the present work.
 %\begin{figure}[h!]
     %\centering
-    %\includegraphics[width=1.0\textwidth]{Strong_Weak_Efficiency.png}
-    %\caption{Strong and Weak scaling efficiency measures on Cooley nodes. Left: Strong scaling efficiency measures. Efficiency vs. the number of nodes for different number of threads per node.
-    %Right: Weak scaling efficiency measures. Efficiency vs. the number of nodes for 8 threads per node.}
-    %\label{fig:Strong_Weak_Efficiency}
+    %\includegraphics[width=0.8\textwidth]{Skeleton.png}
+    %\caption{Hierarchical Inheritance and Compositional Structure of the Model Implementation.
+    %\glsfirst{csom} inherits from \glsfirst{dsom} which inherits from \glsfirst{ssom}.
+    %The \glsfirst{el} is formed by the composition of a set of \glspl{csom} gathered
+    %in a std::vector \glsfirst{stl} container.}
+    %\label{fig:Skeleton}
 %\end{figure}
 
 %\pagebreak
 
-%As can be seen in Fig. \ref{fig:Strong_Weak_Efficiency} we have an efficiency in the use of the resources that is well above 60\% for strong scaling tests and well above 70\% for weak scaling tests on Cooley nodes. These results are supported by the linearity exhibited in Fig. \ref{fig:Strong_Weak} (left) and by the small slope in the line shown in Fig. \ref{fig:Strong_Weak} (right).
+%We parallelize the \gls{el} class by means of a hybrid \gls{mpi}+\gls{omp} paradigm.
+%We distribute \glspl{csom} among \gls{mpi} ranks as a deck of cards is distributed among different players.
+%Each \gls{mpi} rank ends up with one or more \glspl{csom} and the \glspl{csom} in each rank are distributed
+%among different \gls{omp} threads (Fig. \ref{fig:EncoderParallelization} A and B respectively).
+%Information among \gls{mpi} ranks must be transferred in each time step.
+%We gather all the information corresponding to the \glspl{csom}
+%in each rank and then use \gls{mpi} Bcast function to transmit such information
+%using a special comunication protocol by means of which we specify the boundaries
+%in the information corresponding to each \gls{csom}(Fig. \ref{fig:EncoderParallelization} C).
+%By means of this strategy each MPI rank has to call \gls{mpi} Bcast just once
+%in order to transmit its data.
+%The \gls{el} uses \gls{mpi} I/O parallel file system to save its status in Matlab/Octave format
+%(Fig. \ref{fig:EncoderParallelization} D).
+%Each \gls{mpi} rank gathers all the data corresponding to its \glspl{csom} in the \gls{el} and
+%communicates the part of the file it will use to the other \gls{mpi} ranks, in order to store the data
+%without interfering with the other ranks in the \gls{mpi} environment.
+%Then, each \gls{mpi} rank saves all its data with a unique call to \gls{mpi} Write. 
+
+
+%\begin{figure}[h!]
+    %\centering
+    %\includegraphics[width=0.75\textwidth]{EncoderParallelization.png}
+    %\caption{\glsfirst{el} \gls{mpi}+\gls{omp} parallelization. (A) Distribution of \gls{csom} objects in an \gls{el} with
+    %3 by 8 (24) \glspl{cc} among three \gls{mpi} ranks with three \gls{omp} threads per rank.
+    %Certain ranks could take care of a different number of
+    %\glspl{csom} depending on the number of \gls{mpi} ranks as well as the number of \glspl{cc} in the \gls{el}.
+    %(B) Each \gls{mpi} rank distributes its \glspl{csom} among different threads in the same fashion.
+    %(C) \gls{mpi} \gls{ipc} among different ranks. \gls{ipc} is carried out at each time step since each \gls{mpi} rank 
+    %requires the complete \gls{el} output at each time step.
+    %Each \gls{mpi} rank broadcasts the information corresponding to its \glspl{cc} to the other ranks in the \gls{mpi}
+    %environment.
+    %(D) \gls{el} information distribution in a file to save its status.
+    %Each \gls{mpi} rank puts the formated data corresponding to its \glspl{csom} in a \gls{stl} stringstream class template.
+    %Rank 0 also takes care of the \gls{el} structure, connectivity and parameters.
+    %Once each rank has its stringstream with the formated data, it communicates its file view to the other ranks.
+    %Then each rank writes its stream of bytes in parallel without interfering with other ranks in the \gls{mpi} environment.
+    %An \gls{el} with a different number of ranks can load the same file without affecting the final results.
+    %Each rank in the new \gls{el} loads the complete file in a \gls{stl} stringstream class template and then takes the
+    %informations that concern it from such structure.}
+    %\label{fig:EncoderParallelization}
+%\end{figure}
+
+%\pagebreak
+
+%The implementation has Checkpoint and Restart capacity in its training stage where there is total flexibility
+%in terms of the number of ranks with which the execution is restarted. A cortical layer could have been saved
+%with $n$ ranks and such layer could be restarted with $m$ ranks without affecting the final results.
+
+
+%It is important to mention that the number of \glspl{cc} shown in
+%Fig. \ref{fig:EncoderParallelization} is merely illustrative and
+%does not reflect the real numbers in terms of computational resources used for this implementation.
+
+%%The simulations performed for this work were carried out in an \gls{alcf}
+%%Allocation at \gls{anl}.
+%%We run the algorithms on Cooley Cluster with simulations using 25 nodes 
+%%(9 \glspl{cc} per node and one node per \gls{mpi} rank)
+%%and 8 threads per node/rank (almost one thread per \gls{cc}).
+
+%We performed all computational experiments on Cooley, a visualization and analysis cluster at Argonne National Laboratory. We ran the simulations using 25 nodes (9 \glspl{cc} per node and one node per \gls{mpi} rank) and 8 OpenMP threads per node/rank (almost one thread per \gls{cc}).
 
 
 
-Straight lines in Fig. \ref{fig:Strong_Weak} (left) show an initially good strong scalability of our code while the small slope exhibited by Fig. \ref{fig:Strong_Weak} (right) allows us to foresee a good weak scaling performance of our code in high end leadership supercomputers.
+%~\\
+%\noindent{\underline{\textit{Initial Strong and Weak Scaling Tests on Cooley}}}
+%~\\
+%~\\
+
+%Beyond the fact that our computational approach is intended to be applied in leadership supercomputers in the future, in the present work an essential step is to test our code in order to see how it uses the resources provided by Cooley Nodes.
+%Parallel scalability is a measurement that indicates how efficient is our code when using increasing numbers of parallel processing elements--Nodes or Processes and \glspl{cpu} or Threads on Cooley.
+%Fig. \ref{fig:Strong_Weak} shows the scaling capacity of our code in terms of run time vs. number of processing elements used for the task.
+%In our tests we always constrain our code to run one \gls{mpi} rank per Cooley node. Each \gls{mpi} rank spreads an specific number of threads through the different \glspl{cpu} in its corresponding node (Fig. \ref{fig:EncoderParallelization} A and B).
+%There are two ways to measure the parallel performance of a given application. The measure to be applied will depend on whether the application is \gls{cpu}-bound or memory-bound. Such measurements are referred to as \emph{strong} and \emph{weak} scaling, respectively.
+
+
+
+%\begin{figure}[h!]
+    %\centering
+    %\includegraphics[width=1.0\textwidth]{Strong_Weak.png}
+    %\caption{Strong and Weak scaling tests on Cooley nodes. Left: Strong scaling. Run time vs. the number of nodes for different number of threads per node.
+	    %The problem size stays fixed but the number of processing elements are increased.
+    %Right: Weak scaling. Run time vs. the number of nodes for different number of threads per node.
+    %In this case the problem workload assigned to each processing element stays constant and additional elements are used to solve a larger total problem (i.e. a problem that would not fit in the available RAM on a single node).}
+    %\label{fig:Strong_Weak}
+%\end{figure}
+
+%\pagebreak
+
+
+%%~\\
+%%\noindent{\textit{Strong Scaling}}
+%%~\\
+%%~\\
+
+%%In strong scaling, it is considered that a program scales linearly when the time spent by the run is reduced in proportion to the number of processing elements used ($N$).
+%%If the amount of time to complete a run with 1 processing element is $t_1$, and the amount of time spent to complete the same run with $N$ processing elements is $t_N$, the strong scaling efficiency is~\cite{scaling}:
+
+%%\begin{equation}
+	%%t_1/(N * t_N) * 100
+%%\end{equation}
+
+%%In the present work we achieved an efficiency in strong scaling of 70\% with 12 Nodes and 12 threads per node.
+
+%%~\\
+%%\noindent{\textit{Weak Scaling}}
+%%~\\
+%%~\\
+
+%%In the case of weak scaling, linear scaling is achieved if the run time stays constant while the workload is increased in direct proportion to the number of processors.
+%%If the amount of time to complete a run with 1 processing element is $t_1$, and the amount of time to complete $N$ of the same runs with $N$ processing elements is $t_N$, the weak scaling efficiency (as a percentage of linear) is given as~\cite{scaling}:
+
+%%\begin{equation}
+	%%t_1/t_N * 100
+%%\end{equation}
+
+%%In the present work we achieved an efficiency in weak scaling of 78.4\% with 64 Nodes and 8 threads per node.
+
+%%Fig.~\ref{fig:Strong_Weak_Efficiency} shows strong and weak scaling efficiencies for different number of processing elements--nodes in the present work.
+%%\begin{figure}[h!]
+    %%\centering
+    %%\includegraphics[width=1.0\textwidth]{Strong_Weak_Efficiency.png}
+    %%\caption{Strong and Weak scaling efficiency measures on Cooley nodes. Left: Strong scaling efficiency measures. Efficiency vs. the number of nodes for different number of threads per node.
+    %%Right: Weak scaling efficiency measures. Efficiency vs. the number of nodes for 8 threads per node.}
+    %%\label{fig:Strong_Weak_Efficiency}
+%%\end{figure}
+
+%%\pagebreak
+
+%%As can be seen in Fig. \ref{fig:Strong_Weak_Efficiency} we have an efficiency in the use of the resources that is well above 60\% for strong scaling tests and well above 70\% for weak scaling tests on Cooley nodes. These results are supported by the linearity exhibited in Fig. \ref{fig:Strong_Weak} (left) and by the small slope in the line shown in Fig. \ref{fig:Strong_Weak} (right).
+
+
+
+%Straight lines in Fig. \ref{fig:Strong_Weak} (left) show an initially good strong scalability of our code while the small slope exhibited by Fig. \ref{fig:Strong_Weak} (right) allows us to foresee a good weak scaling performance of our code in high end leadership supercomputers.
 
 
 
@@ -1619,20 +1619,20 @@ We show via a computational simulation that our implementation of the cortical m
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S3 Data.}
 \label{S3_Data}
-{\bf Datasets used to train and test the \gls{cstm}.} A folder containing all the datasets (audio file corpora) employed in the present research to train the \gls{el} and the \glspl{svm} and to test the complete \gls{cstm}. This folder includes a set of 840 corpora which are distributed in 2 corpora for each configuration organized by 2 sets of synthesized voices, 3 syllabic conditions and 10 vocabularies all distributed in 6 acoustic variants, beyond the original version of the corpora. (Zenodo ).
+{\bf Datasets used to train and test the \gls{cstm}.} A folder containing all the datasets (audio file corpora) employed in the present research to train the \gls{el} and the \glspl{svm} and to test the complete \gls{cstm}. This folder includes a set of 840 corpora which are distributed in 2 corpora for each configuration organized by 2 sets of synthesized voices, 3 syllabic conditions and 10 vocabularies all distributed in 6 acoustic variants, beyond the original version of the corpora \cite{dematties_dario_2019_2576130}.
 
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S1 Code.}
 \label{S1_Code}
-{\bf All the code underlaying the present work.} A GitHub repository with the code used to implement the \gls{cstm} as well as the scripts to generate the datasets used in this work. (GitHub , Zenodo ).
+{\bf All the code underlaying the present work.} A GitHub repository with the code used to implement the \gls{cstm} as well as the scripts to generate the datasets used in this work \cite{dematties_dario_2019_2576384}.
 
 \paragraph*{S1 Appendix.}
 \label{S1_Appendix}
-{\bf Computational Setup.} An appendix including the Computational Setup of our implementation in this work which addresses its object oriented inheritance structure as well as the parallelization strategy used for its implementation in \glsfirst{hpc} resources. (Wiki section at GitHub , Zenodo ).
+{\bf Computational Setup.} An appendix including the Computational Setup of our \gls{cstm}, which describes its object oriented inheritance structure as well as the parallelization strategy used for its implementation in \glsfirst{hpc} resources. (Zenodo ).
 
 \paragraph*{S2 Appendix.}
 \label{S2_Appendix}
-{\bf Complementary Experiments.} An appendix including a battery of complementary experiments showing the classification accuracy levels of different instances of the \gls{el} in the \gls{cstm}. (Wiki section at GitHub , Zenodo ).
+{\bf Complementary Experiments.} An appendix including a battery of complementary experiments showing the classification accuracy levels of different instances of the \gls{el} in the \gls{cstm}. (Zenodo ).
 
 
 
