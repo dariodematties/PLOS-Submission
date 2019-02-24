@@ -191,14 +191,14 @@
 \newcommand{\lorem}{{\bf LOREM}}
 \newcommand{\ipsum}{{\bf IPSUM}}
 
-\newcommand{\reviewertwo}[1]{\textcolor{red}{#1}}
-\newcommand{\reviewerfour}[1]{\textcolor{blue}{#1}}
-\newcommand{\reviewerfive}[1]{\textcolor{green}{#1}}
+%\newcommand{\reviewertwo}[1]{\textcolor{red}{#1}}
+%\newcommand{\reviewerfour}[1]{\textcolor{blue}{#1}}
+%\newcommand{\reviewerfive}[1]{\textcolor{green}{#1}}
 
-%\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
-%\newcommand{\reviewertwo}[1]{\textcolor{airforceblue}{#1}}
-%\newcommand{\reviewerfour}[1]{\textcolor{airforceblue}{#1}}
-%\newcommand{\reviewerfive}[1]{\textcolor{airforceblue}{#1}}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\newcommand{\reviewertwo}[1]{\textcolor{airforceblue}{#1}}
+\newcommand{\reviewerfour}[1]{\textcolor{airforceblue}{#1}}
+\newcommand{\reviewerfive}[1]{\textcolor{airforceblue}{#1}}
 
 %\newcommand{\reviewertwo}[1]{\hl{#1}}
 %\newcommand{\reviewerfour}[1]{\hl{#1}}
@@ -442,6 +442,7 @@ The voices are sequentially chosen (pseudo-randomly) with the restriction that n
 
 Every word in the audio file is followed by a silence gap whose time is equivalent to the uttering time of the monosyllabic word \textit{cat}, uttered by the same voice used for the last word. We use the \texttt{text2wave} program provided by Festival in order to generate a \texttt{wav} file from the SABLE file.
 
+We generated all the datasets (audio file corpora) employed in the present research to train the \gls{el} and the \glspl{svm} and to test the complete \gls{cstm}. This folder includes a set of 840 corpora which are distributed in 2 corpora for each configuration organized by 2 sets of synthesized voices, 3 syllabic conditions and 10 vocabularies all distributed in 6 acoustic variants, beyond the original version of the corpora. The 6 acoustic variants corresponds to: two levels of white noise (19.8 dB and 13.8 dB \gls{snr} average \gls{rms} power rate), two levels of reverberation (\gls{rt} value of 0.61 seconds and 1.78 seconds) and variations of pitch on both directions (from E to G and from E to C) \cite{dematties_dario_2019_2576130}.
 
 
 
@@ -1453,7 +1454,7 @@ a sustained superiority across words with different number of syllables}.
 %These features have already been explained in terms of their properties \cite{hawkins_2016}, but more specifically in terms of their sequence learning capabilities \cite{cui_2016}.
 \reviewerfour{Results obtained in the present work support the computational hypotheses posed in our modeling approach in order to mimic incidental phonetic invariance and generalization.
 These hypotheses have already been explained in terms of their properties \cite{hawkins_2016}, but more specifically in terms of their sequence learning capabilities \cite{cui_2016}}.
-Nevertheless, there are no precedents of such neurophysiological features tested in word classification tasks as the ones carried out here, in which phonotactic rules are acquired \reviewerfour{without the application of optimization procedures such as backpropagating errors by means of gradient descent}. In addition, our approach presents substantial differences in terms of feature algorithmic implementation. In the present work, distal synapses make continuous individual contributions and our anatomical micro-columnar organization acquires its physiological behavior spontaneously from learning. We also tested such features in a realization with hundreds of cortical columns each combining several micro-columns with stochastic afferent activation whose future implementations are intended to explode large-scale simulations in leadership supercomputers (see section \nameref{Comp_setup}).
+Nevertheless, there are no precedents of such neurophysiological features tested in word classification tasks as the ones carried out here, in which phonotactic rules are acquired \reviewerfour{without the application of optimization procedures such as backpropagating errors by means of gradient descent}. In addition, our approach presents substantial differences in terms of feature algorithmic implementation. In the present work, distal synapses make continuous individual contributions and our anatomical micro-columnar organization acquires its physiological behavior spontaneously from learning. We also tested such features in a realization with hundreds of cortical columns each combining several micro-columns with stochastic afferent activation whose future implementations are intended to explode large-scale simulations in leadership supercomputers.% (see section \nameref{Comp_setup}).
 
 Computational models have been previously developed to understand how phonetic categories are acquired~\cite{rasanen_2012}. The goal in these works has been mainly to explain relevant aspects of phonetic acquisition, without details about how the brain might provide such computations. 
 Lee et al. (2009), employed unsupervised feature learning for audio classification with \glspl{cdbn}~\cite{Lee:2009:UFL:2984093.2984217}.
@@ -1608,7 +1609,30 @@ We show via a computational simulation that our implementation of the cortical m
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S1 Data.}
 \label{S1_Data}
-{\bf \glsfirst{cstm} experimental results data.} A file with tables and charts that includes all the numerical results returned by the experiments in this work.
+{\bf \glsfirst{cstm} experimental results data.} A spreadsheet file that includes all the numerical results returned by the experiments as well as the complete Statistical Significance tests conducted in this work. (Zenodo ).
+
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+\paragraph*{S2 Data.}
+\label{S2_Data}
+{\bf \gls{cstm} complementary experimental results data.} A spreadsheet file that includes all the numerical results returned by a complementary set of experiments. (Zenodo ).
+
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+\paragraph*{S3 Data.}
+\label{S3_Data}
+{\bf Datasets used to train and test the \gls{cstm}.} A folder containing all the datasets (audio file corpora) employed in the present research to train the \gls{el} and the \glspl{svm} and to test the complete \gls{cstm}. This folder includes a set of 840 corpora which are distributed in 2 corpora for each configuration organized by 2 sets of synthesized voices, 3 syllabic conditions and 10 vocabularies all distributed in 6 acoustic variants, beyond the original version of the corpora. (Zenodo ).
+
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+\paragraph*{S1 Code.}
+\label{S1_Code}
+{\bf All the code underlaying the present work.} A GitHub repository with the code used to implement the \gls{cstm} as well as the scripts to generate the datasets used in this work. (GitHub , Zenodo ).
+
+\paragraph*{S1 Appendix.}
+\label{S1_Appendix}
+{\bf Computational Setup.} An appendix including the Computational Setup of our implementation in this work which addresses its object oriented inheritance structure as well as the parallelization strategy used for its implementation in \glsfirst{hpc} resources. (Wiki section at GitHub , Zenodo ).
+
+\paragraph*{S2 Appendix.}
+\label{S2_Appendix}
+{\bf Complementary Experiments.} An appendix including a battery of complementary experiments showing the classification accuracy levels of different instances of the \gls{el} in the \gls{cstm}. (Wiki section at GitHub , Zenodo ).
 
 
 
