@@ -292,7 +292,7 @@ B. Silvano Zanutto\textsuperscript{1,4} %,
 %I kept this copy of the old abstract just in case we need it again
 %There are many computational theories that have been developed in order to improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units--such as phonemes--are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. We introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. The model leverages the phonetic classification performance of the supervised \gls{svm} for monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch variations. Thus, our computational model outperforms sophisticated multiresolution spectro-temporal auditory feature representations of phonetic linguistic streams of data.
 
-\reviewertwo{Many computational theories have been developed to} improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to \reviewerfour{psycholinguistic data} and neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units–such as phonemes–are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. \reviewerfour{We are specially motivated by the fact that 8-month-old human infants can accomplish segmentation of words from fluent audio streams based exclusively on the statistical relationships between neighboring speech sounds without any kind of supervision}. In this paper, we introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties, \reviewertwo{including columnar organization, spontaneous micro-columnar formation, adaptation to contextual activations and {\glspl{sdr}} produced by means of partial \gls{nmda} depolarization}. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. \reviewertwo{Our model improves the performance of a \gls{svm} classifier for} monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch \reviewerfour{and voice} variations. \reviewerfour{Furthermore, our approach emphasizes potential self-organizing cortical principles achieving an improvement without any kind of optimization guidance which could minimize hypothetical loss functions by means of--for example--backpropagation}. Thus, our computational model outperforms multiresolution spectro-temporal auditory feature representations \reviewerfour{using only the statistical sequential structure immerse in the phonotactic rules of the input stream}.
+\reviewertwo{Many computational theories have been developed to} improve artificial phonetic classification performance from linguistic auditory streams. However, less attention has been given to \reviewerfour{psycholinguistic data} and neurophysiological features recently found in cortical tissue. We focus on a context in which basic linguistic units–such as phonemes–are extracted and robustly classified by humans and other animals from complex acoustic streams in speech data. \reviewerfour{We are especially motivated by the fact that 8-month-old human infants can accomplish segmentation of words from fluent audio streams based exclusively on the statistical relationships between neighboring speech sounds without any kind of supervision}. In this paper, we introduce a biologically inspired and fully unsupervised neurocomputational approach that incorporates key neurophysiological and anatomical cortical properties, \reviewertwo{including columnar organization, spontaneous micro-columnar formation, adaptation to contextual activations and {\glspl{sdr}} produced by means of partial \gls{nmda} depolarization}. Its feature abstraction capabilities show promising phonetic invariance and generalization attributes. \reviewertwo{Our model improves the performance of a \gls{svm} classifier for} monosyllabic, disyllabic and trisyllabic word classification tasks in the presence of environmental disturbances such as white noise, reverberation, and pitch \reviewerfour{and voice} variations. \reviewerfour{Furthermore, our approach emphasizes potential self-organizing cortical principles achieving improvement without any kind of optimization guidance which could minimize hypothetical loss functions by means of--for example--backpropagation}. Thus, our computational model outperforms multiresolution spectro-temporal auditory feature representations \reviewerfour{using only the statistical sequential structure immerse in the phonotactic rules of the input stream}.
 
 % * <awainselboim@gmail.com> 2018-05-15T14:16:16.696Z:
 %
@@ -882,7 +882,7 @@ From the group of units that tend to be depolarized by current afferent inputs f
 only a reduced sub-set of those units are likely to fire in the previous contextual firing history
 in the \gls{el}--Fig. \ref{fig:Activation} C left.
 
-In case there is no context, that is, \reviewertwo{if not enough number of the units normally depolarized by afferent inputs
+In case there is no context, that is, \reviewertwo{if not enough units normally depolarized by afferent inputs
 are partially depolarized by previous--lateral and apical--activations}--Fig. \ref{fig:Activation} B right--,
 all units in the afferent excited clusters will be active, covering more hypotheses for next inputs--Fig. \ref{fig:Activation} C right.
 
@@ -1614,12 +1614,12 @@ We show via a computational simulation that our cortical model leverages the per
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S1 Data.}
 \label{S1_Data}
-{\bf \glsfirst{cstm} experimental results data.} A spreadsheet file that includes all the numerical results returned by the experiments as well as the complete Statistical Significance tests conducted in this work. (Zenodo ).
+{\bf \glsfirst{cstm} experimental results data.} A spreadsheet file that includes all the numerical results returned by the experiments as well as the complete Statistical Significance tests conducted in this work \cite{dematties_dario_2019_2581550}.
 
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S2 Data.}
 \label{S2_Data}
-{\bf \gls{cstm} complementary experimental results data.} A spreadsheet file that includes all the numerical results returned by a complementary set of experiments. (Zenodo ).
+{\bf \gls{cstm} complementary experimental results data.} A spreadsheet file that includes all the numerical results returned by a complementary set of experiments \cite{dematties_dario_2019_2581550}.
 
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S3 Data.}
@@ -1629,11 +1629,11 @@ We show via a computational simulation that our cortical model leverages the per
 % Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{S1 Code.}
 \label{S1_Code}
-{\bf All the code underlaying the present work.} A GitHub repository with the code used to implement the \gls{cstm} as well as the scripts to generate the datasets used in this work \cite{dematties_dario_2019_2576384}.
+{\bf All the code underlaying the present work.} A GitHub repository with the code used to implement the \gls{cstm} as well as the scripts to generate the datasets used in this work \cite{dematties_dario_2019_2580396}.
 
 \paragraph*{S1 Appendix.}
 \label{S1_Appendix}
-{\bf Computational Setup and Complementary Experiments.} An appendix including the Computational Setup of our \gls{cstm}, which describes its object oriented inheritance structure as well as the parallelization strategy used for its implementation in \glsfirst{hpc} resources. We also include Strong and Weak scaling tests of our implementation on \gls{hpc} resources. An appendix including a battery of complementary experiments showing the classification accuracy levels of different instances of the \gls{el} in the \gls{cstm}. (Zenodo ).
+{\bf Computational Setup and Complementary Experiments.} An appendix including the Computational Setup of our \gls{cstm}, which describes its object oriented inheritance structure as well as the parallelization strategy used for its implementation in \glsfirst{hpc} resources. We also include Strong and Weak scaling tests of our implementation on \gls{hpc} resources. An appendix including a battery of complementary experiments showing the classification accuracy levels of different instances of the \gls{el} in the \gls{cstm} \cite{dematties_dario_2019_2581550}.
 
 
 
