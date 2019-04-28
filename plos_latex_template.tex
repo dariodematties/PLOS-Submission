@@ -196,13 +196,14 @@
 %\newcommand{\reviewerfive}[1]{\textcolor{green}{#1}}
 
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
-\newcommand{\reviewertwo}[1]{\textcolor{airforceblue}{#1}}
-\newcommand{\reviewerfour}[1]{\textcolor{airforceblue}{#1}}
-\newcommand{\reviewerfive}[1]{\textcolor{airforceblue}{#1}}
+%\newcommand{\reviewertwo}[1]{\textcolor{airforceblue}{#1}}
+%\newcommand{\reviewerfour}[1]{\textcolor{airforceblue}{#1}}
+%\newcommand{\reviewerfive}[1]{\textcolor{airforceblue}{#1}}
+\newcommand{\newreview}[1]{\textcolor{airforceblue}{#1}}
 
-%\newcommand{\reviewertwo}[1]{\textcolor{black}{#1}}
-%\newcommand{\reviewerfour}[1]{\textcolor{black}{#1}}
-%\newcommand{\reviewerfive}[1]{\textcolor{black}{#1}}
+\newcommand{\reviewertwo}[1]{\textcolor{black}{#1}}
+\newcommand{\reviewerfour}[1]{\textcolor{black}{#1}}
+\newcommand{\reviewerfive}[1]{\textcolor{black}{#1}}
 
 %\newcommand{\reviewertwo}[1]{\hl{#1}}
 %\newcommand{\reviewerfour}[1]{\hl{#1}}
@@ -1357,7 +1358,7 @@ The classification performances are shown in Fig. \ref{fig:PLOT}.
     for monosyllabic, disyllabic and trisyllabic words.
     White Noise 1 determines a \gls{snr} average \gls{rms} power rate of 19.8 dB while White Noise 2 13.8 dB.
     Reverberation 30\% determines a \gls{rt} value of 0.61 seconds while Reverberation 60\% determines a \gls{rt} value of 1.78 seconds.
-    Pitch Up determines a pitch move from E to G, while Pitch Down determines a pitch move from E to C. Changed Voices corresponds to corpora generated using a different set of voices from the one used to train the \glspl{el} and the classifiers. \reviewertwo{Error bars depict 95\% Confidence Interval values. The \emph{p} values correspond to one-tailed paired t-tests and NS stands for Not Statistically Significant.}}
+    Pitch Up determines a pitch move from E to G, while Pitch Down determines a pitch move from E to C. Changed Voices corresponds to corpora generated using a different set of voices from the one used to train the \glspl{el} and the classifiers. \reviewertwo{Error bars depict 95\% Confidence Interval values. The \emph{p} values correspond to \newreview{two-tailed} paired t-tests and NS stands for Not Statistically Significant.}}
     \label{fig:PLOT}
 \end{figure}
 
@@ -1418,10 +1419,12 @@ white noise, reverberation and pitch \reviewerfour{and voice} variations.
 As can be seen in the figures, the \gls{el} outperforms the \gls{mrstsa} in all cases.
 Such behavior persists for multisyllabic words.
 
-\reviewertwo{We performed one-tailed paired t-tests for 10 different corpora generated from 10 different vocabularies--section \nameref{CorpGen}. As can be seen in Fig. \ref{fig:PLOT}--except for monosyllabic words with White Noise 1 $(p < 0.11)$--there was Statistical Significance for all conditions considering $(p<0.05)$}.
+\reviewertwo{We performed \newreview{two-tailed} paired t-tests for 10 different corpora generated from 10 different vocabularies--section \nameref{CorpGen}. As can be seen in Fig. \ref{fig:PLOT}--except for monosyllabic words with White Noise 1 \newreview{$(p < 0.22)$}--there was Statistical Significance for all conditions considering $(p<0.05)$}.
+
+\newreview{Given that we conducted 7 t-tests for each independent word classification task, we also used Holm–Bonferroni corrections with a correction factor of 7 in order to reduce the probability of type I and type II errors in the context of the different experimental conditions. By means of such corrections we confirmed the statistical significance for all the cases showed in Fig.\ref{fig:PLOT}.}
 
 Fig. \ref{fig:AV_ACC} shows average classification accuracies across all \reviewertwo{acoustic variants} for mono, di and trisyllabic words.
-\reviewertwo{In this case, we also performed one-tailed paired t-tests, but this time for 7 different acoustic variant conditions.
+\reviewertwo{In this case, we also performed \newreview{two-tailed} paired t-tests, but this time for 7 different acoustic variant conditions.
 As can be seen in the figure, all performed tests are statistically significant and the encoder layer clearly shows
 a sustained superiority across words with different number of syllables}.
  
@@ -1429,7 +1432,7 @@ a sustained superiority across words with different number of syllables}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{PLOT1.png}
-    \caption{Average classification accuracies across all \reviewertwo{acoustic variants} for mono, di and trisyllabic words. \reviewertwo{Error bars depict 95\% Confidence Interval values. The \emph{p} values correspond to one-tailed paired t-tests}.}
+    \caption{Average classification accuracies across all \reviewertwo{acoustic variants} for mono, di and trisyllabic words. \reviewertwo{Error bars depict 95\% Confidence Interval values. The \emph{p} values correspond to \newreview{two-tailed} paired t-tests}.}
     \label{fig:AV_ACC}
 \end{figure}
 
